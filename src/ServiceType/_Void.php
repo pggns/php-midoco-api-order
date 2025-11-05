@@ -189,6 +189,61 @@ class _Void extends AbstractSoapClientBase
         }
     }
     /**
+     * Method to call the operation originally named
+     * voidSupplierAgencySettlementBooking
+     * Meta information extracted from the WSDL
+     * - SOAPHeaderNames: MidocoCredentials
+     * - SOAPHeaderNamespaces: http://www.midoco.de/system
+     * - SOAPHeaderTypes: \Pggns\MidocoApi\Order\StructType\MidocoCredentialsType
+     * - SOAPHeaders: required
+     * @uses AbstractSoapClientBase::getSoapClient()
+     * @uses AbstractSoapClientBase::setResult()
+     * @uses AbstractSoapClientBase::saveLastError()
+     * @param \Pggns\MidocoApi\Order\StructType\VoidSupplierAgencySettlementBookingRequest $paramVoidSupplierAgencySettlementBookingRequest
+     * @return \Pggns\MidocoApi\Order\StructType\VoidSupplierAgencySettlementBookingResponse|bool
+     */
+    public function voidSupplierAgencySettlementBooking(\Pggns\MidocoApi\Order\StructType\VoidSupplierAgencySettlementBookingRequest $paramVoidSupplierAgencySettlementBookingRequest)
+    {
+        try {
+            $this->setResult($resultVoidSupplierAgencySettlementBooking = $this->getSoapClient()->__soapCall('voidSupplierAgencySettlementBooking', [
+                $paramVoidSupplierAgencySettlementBookingRequest,
+            ], [], [], $this->outputHeaders));
+        
+            return $resultVoidSupplierAgencySettlementBooking;
+        } catch (SoapFault $soapFault) {
+            $this->saveLastError(__METHOD__, $soapFault);
+        
+            return false;
+        }
+    }
+    /**
+     * Method to call the operation originally named voidSupplierAgencySettlement
+     * Meta information extracted from the WSDL
+     * - SOAPHeaderNames: MidocoCredentials
+     * - SOAPHeaderNamespaces: http://www.midoco.de/system
+     * - SOAPHeaderTypes: \Pggns\MidocoApi\Order\StructType\MidocoCredentialsType
+     * - SOAPHeaders: required
+     * @uses AbstractSoapClientBase::getSoapClient()
+     * @uses AbstractSoapClientBase::setResult()
+     * @uses AbstractSoapClientBase::saveLastError()
+     * @param \Pggns\MidocoApi\Order\StructType\VoidSupplierAgencySettlementRequest $paramVoidSupplierAgencySettlementRequest
+     * @return \Pggns\MidocoApi\Order\StructType\VoidSupplierAgencySettlementResponse|bool
+     */
+    public function voidSupplierAgencySettlement(\Pggns\MidocoApi\Order\StructType\VoidSupplierAgencySettlementRequest $paramVoidSupplierAgencySettlementRequest)
+    {
+        try {
+            $this->setResult($resultVoidSupplierAgencySettlement = $this->getSoapClient()->__soapCall('voidSupplierAgencySettlement', [
+                $paramVoidSupplierAgencySettlementRequest,
+            ], [], [], $this->outputHeaders));
+        
+            return $resultVoidSupplierAgencySettlement;
+        } catch (SoapFault $soapFault) {
+            $this->saveLastError(__METHOD__, $soapFault);
+        
+            return false;
+        }
+    }
+    /**
      * Method to call the operation originally named voidRevenueBooking
      * Meta information extracted from the WSDL
      * - SOAPHeaderNames: MidocoCredentials
@@ -300,7 +355,7 @@ class _Void extends AbstractSoapClientBase
     /**
      * Returns the result
      * @see AbstractSoapClientBase::getResult()
-     * @return \Pggns\MidocoApi\Order\StructType\VoidAgencySettlementResponse|\Pggns\MidocoApi\Order\StructType\VoidAndRebookForeignCurrencyEntryHistoryResponse|\Pggns\MidocoApi\Order\StructType\VoidBillingDocumentResponse|\Pggns\MidocoApi\Order\StructType\VoidJournalEntryResponse|\Pggns\MidocoApi\Order\StructType\VoidMediatorBillingResponse|\Pggns\MidocoApi\Order\StructType\VoidMediatorProductSettlementResponse|\Pggns\MidocoApi\Order\StructType\VoidMediatorSettlementResponse|\Pggns\MidocoApi\Order\StructType\VoidReceiptResponse|\Pggns\MidocoApi\Order\StructType\VoidRevenueBookingResponse|\Pggns\MidocoApi\Order\StructType\VoidTravelNoMarginBookingResponse
+     * @return \Pggns\MidocoApi\Order\StructType\VoidAgencySettlementResponse|\Pggns\MidocoApi\Order\StructType\VoidAndRebookForeignCurrencyEntryHistoryResponse|\Pggns\MidocoApi\Order\StructType\VoidBillingDocumentResponse|\Pggns\MidocoApi\Order\StructType\VoidJournalEntryResponse|\Pggns\MidocoApi\Order\StructType\VoidMediatorBillingResponse|\Pggns\MidocoApi\Order\StructType\VoidMediatorProductSettlementResponse|\Pggns\MidocoApi\Order\StructType\VoidMediatorSettlementResponse|\Pggns\MidocoApi\Order\StructType\VoidReceiptResponse|\Pggns\MidocoApi\Order\StructType\VoidRevenueBookingResponse|\Pggns\MidocoApi\Order\StructType\VoidSupplierAgencySettlementBookingResponse|\Pggns\MidocoApi\Order\StructType\VoidSupplierAgencySettlementResponse|\Pggns\MidocoApi\Order\StructType\VoidTravelNoMarginBookingResponse
      */
     public function getResult()
     {

@@ -168,6 +168,13 @@ class MakeBillingDocumentForOrderRequest extends AbstractStructBase
      */
     protected ?bool $isGdsAutoPrint = null;
     /**
+     * The includeAgencyPositions
+     * Meta information extracted from the WSDL
+     * - default: false
+     * @var bool|null
+     */
+    protected ?bool $includeAgencyPositions = null;
+    /**
      * Constructor method for MakeBillingDocumentForOrderRequest
      * @uses MakeBillingDocumentForOrderRequest::setMidocoSellPassenger()
      * @uses MakeBillingDocumentForOrderRequest::setMidocoDetailedBillingPositionInfo()
@@ -194,6 +201,7 @@ class MakeBillingDocumentForOrderRequest extends AbstractStructBase
      * @uses MakeBillingDocumentForOrderRequest::setCreateITInvoice()
      * @uses MakeBillingDocumentForOrderRequest::setCreateNormalInvoice()
      * @uses MakeBillingDocumentForOrderRequest::setIsGdsAutoPrint()
+     * @uses MakeBillingDocumentForOrderRequest::setIncludeAgencyPositions()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSellPassenger[] $midocoSellPassenger
      * @param \Pggns\MidocoApi\Order\StructType\MidocoDetailedBillingPositionInfo[] $midocoDetailedBillingPositionInfo
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOnlinePaymentHelper $midocoOnlinePaymentHelper
@@ -219,8 +227,9 @@ class MakeBillingDocumentForOrderRequest extends AbstractStructBase
      * @param bool $createITInvoice
      * @param bool $createNormalInvoice
      * @param bool $isGdsAutoPrint
+     * @param bool $includeAgencyPositions
      */
-    public function __construct(?array $midocoSellPassenger = null, ?array $midocoDetailedBillingPositionInfo = null, ?\Pggns\MidocoApi\Order\StructType\MidocoOnlinePaymentHelper $midocoOnlinePaymentHelper = null, ?\Pggns\MidocoApi\Order\StructType\MidocoCustomerInfo $midocoCustomerInfo = null, ?string $confirmationGroup = null, ?int $documentInternalVersion = null, ?int $documentId = null, ?bool $createNewDocument = null, ?bool $deleteExistingDocument = null, ?bool $addToBulkMatchingCCSeetings = null, ?int $orderId = null, ?int $cashBookId = null, ?int $orderInternalVersion = null, ?string $calculatedPrintDate = null, ?bool $partialPayment = null, ?float $partialAmount = null, ?string $preferredType = null, ?string $paymentType = null, ?string $documentType = null, ?bool $collectiveInvoice = null, ?bool $printGroupName = false, ?bool $printAllTravellersNames = false, ?bool $createITInvoice = false, ?bool $createNormalInvoice = false, ?bool $isGdsAutoPrint = false)
+    public function __construct(?array $midocoSellPassenger = null, ?array $midocoDetailedBillingPositionInfo = null, ?\Pggns\MidocoApi\Order\StructType\MidocoOnlinePaymentHelper $midocoOnlinePaymentHelper = null, ?\Pggns\MidocoApi\Order\StructType\MidocoCustomerInfo $midocoCustomerInfo = null, ?string $confirmationGroup = null, ?int $documentInternalVersion = null, ?int $documentId = null, ?bool $createNewDocument = null, ?bool $deleteExistingDocument = null, ?bool $addToBulkMatchingCCSeetings = null, ?int $orderId = null, ?int $cashBookId = null, ?int $orderInternalVersion = null, ?string $calculatedPrintDate = null, ?bool $partialPayment = null, ?float $partialAmount = null, ?string $preferredType = null, ?string $paymentType = null, ?string $documentType = null, ?bool $collectiveInvoice = null, ?bool $printGroupName = false, ?bool $printAllTravellersNames = false, ?bool $createITInvoice = false, ?bool $createNormalInvoice = false, ?bool $isGdsAutoPrint = false, ?bool $includeAgencyPositions = false)
     {
         $this
             ->setMidocoSellPassenger($midocoSellPassenger)
@@ -247,7 +256,8 @@ class MakeBillingDocumentForOrderRequest extends AbstractStructBase
             ->setPrintAllTravellersNames($printAllTravellersNames)
             ->setCreateITInvoice($createITInvoice)
             ->setCreateNormalInvoice($createNormalInvoice)
-            ->setIsGdsAutoPrint($isGdsAutoPrint);
+            ->setIsGdsAutoPrint($isGdsAutoPrint)
+            ->setIncludeAgencyPositions($includeAgencyPositions);
     }
     /**
      * Get MidocoSellPassenger value
@@ -901,6 +911,29 @@ class MakeBillingDocumentForOrderRequest extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($isGdsAutoPrint, true), gettype($isGdsAutoPrint)), __LINE__);
         }
         $this->isGdsAutoPrint = $isGdsAutoPrint;
+        
+        return $this;
+    }
+    /**
+     * Get includeAgencyPositions value
+     * @return bool|null
+     */
+    public function getIncludeAgencyPositions(): ?bool
+    {
+        return $this->includeAgencyPositions;
+    }
+    /**
+     * Set includeAgencyPositions value
+     * @param bool $includeAgencyPositions
+     * @return \Pggns\MidocoApi\Order\StructType\MakeBillingDocumentForOrderRequest
+     */
+    public function setIncludeAgencyPositions(?bool $includeAgencyPositions = false): self
+    {
+        // validation for constraint: boolean
+        if (!is_null($includeAgencyPositions) && !is_bool($includeAgencyPositions)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($includeAgencyPositions, true), gettype($includeAgencyPositions)), __LINE__);
+        }
+        $this->includeAgencyPositions = $includeAgencyPositions;
         
         return $this;
     }

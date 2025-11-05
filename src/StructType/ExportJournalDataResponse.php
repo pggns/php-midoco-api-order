@@ -22,6 +22,7 @@ class ExportJournalDataResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: unbounded
      * - minOccurs: 0
+     * - ref: JournalDataRecord
      * @var \Pggns\MidocoApi\Order\StructType\JournalDataRecord[]
      */
     protected ?array $JournalDataRecord = null;

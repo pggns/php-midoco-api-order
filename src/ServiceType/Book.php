@@ -55,6 +55,33 @@ class Book extends AbstractSoapClientBase
         }
     }
     /**
+     * Method to call the operation originally named bookSupplierAgencySettlement
+     * Meta information extracted from the WSDL
+     * - SOAPHeaderNames: MidocoCredentials
+     * - SOAPHeaderNamespaces: http://www.midoco.de/system
+     * - SOAPHeaderTypes: \Pggns\MidocoApi\Order\StructType\MidocoCredentialsType
+     * - SOAPHeaders: required
+     * @uses AbstractSoapClientBase::getSoapClient()
+     * @uses AbstractSoapClientBase::setResult()
+     * @uses AbstractSoapClientBase::saveLastError()
+     * @param \Pggns\MidocoApi\Order\StructType\BookSupplierAgencySettlementRequest $paramBookSupplierAgencySettlementRequest
+     * @return \Pggns\MidocoApi\Order\StructType\BookSupplierAgencySettlementResponse|bool
+     */
+    public function bookSupplierAgencySettlement(\Pggns\MidocoApi\Order\StructType\BookSupplierAgencySettlementRequest $paramBookSupplierAgencySettlementRequest)
+    {
+        try {
+            $this->setResult($resultBookSupplierAgencySettlement = $this->getSoapClient()->__soapCall('bookSupplierAgencySettlement', [
+                $paramBookSupplierAgencySettlementRequest,
+            ], [], [], $this->outputHeaders));
+        
+            return $resultBookSupplierAgencySettlement;
+        } catch (SoapFault $soapFault) {
+            $this->saveLastError(__METHOD__, $soapFault);
+        
+            return false;
+        }
+    }
+    /**
      * Method to call the operation originally named bookAdviceSettlement
      * Meta information extracted from the WSDL
      * - SOAPHeaderNames: MidocoCredentials
@@ -166,7 +193,7 @@ class Book extends AbstractSoapClientBase
     /**
      * Returns the result
      * @see AbstractSoapClientBase::getResult()
-     * @return \Pggns\MidocoApi\Order\StructType\BookAdviceSettlementResponse|\Pggns\MidocoApi\Order\StructType\BookMidocoVoucher4KickbackResponse|\Pggns\MidocoApi\Order\StructType\BookPaymentProviderSettlementBookingResponse|\Pggns\MidocoApi\Order\StructType\BookPseudoRevenueBookingsResponse|\Pggns\MidocoApi\Order\StructType\BookSupplierAgencySettlementBookingResponse
+     * @return \Pggns\MidocoApi\Order\StructType\BookAdviceSettlementResponse|\Pggns\MidocoApi\Order\StructType\BookMidocoVoucher4KickbackResponse|\Pggns\MidocoApi\Order\StructType\BookPaymentProviderSettlementBookingResponse|\Pggns\MidocoApi\Order\StructType\BookPseudoRevenueBookingsResponse|\Pggns\MidocoApi\Order\StructType\BookSupplierAgencySettlementBookingResponse|\Pggns\MidocoApi\Order\StructType\BookSupplierAgencySettlementResponse
      */
     public function getResult()
     {

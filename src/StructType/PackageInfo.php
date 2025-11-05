@@ -159,7 +159,7 @@ class PackageInfo extends AbstractStructBase
     /**
      * The referenceType
      * Meta information extracted from the WSDL
-     * - documentation: set to the external system id, which has a refernce to this package item
+     * - documentation: set to the external system id, which has a reference to this package item
      * @var string|null
      */
     protected ?string $referenceType = null;

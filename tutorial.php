@@ -1516,6 +1516,30 @@ if ($get->getSabreVacationsExportString(new \Pggns\MidocoApi\Order\StructType\Ge
     print_r($get->getLastError());
 }
 /**
+ * Sample call for getTravelHistoryByToken operation/method
+ */
+if ($get->getTravelHistoryByToken(new \Pggns\MidocoApi\Order\StructType\GetTravelHistoryByTokenRequest()) !== false) {
+    print_r($get->getResult());
+} else {
+    print_r($get->getLastError());
+}
+/**
+ * Sample call for getDestinationManagerLink operation/method
+ */
+if ($get->getDestinationManagerLink(new \Pggns\MidocoApi\Order\StructType\GetDestinationManagerLinkRequest()) !== false) {
+    print_r($get->getResult());
+} else {
+    print_r($get->getLastError());
+}
+/**
+ * Sample call for getOrderIcalContent operation/method
+ */
+if ($get->getOrderIcalContent(new \Pggns\MidocoApi\Order\StructType\GetOrderICalContentRequest()) !== false) {
+    print_r($get->getResult());
+} else {
+    print_r($get->getLastError());
+}
+/**
  * Samples for Make ServiceType
  */
 $make = new \Pggns\MidocoApi\Order\ServiceType\Make($options);
@@ -1859,6 +1883,14 @@ if ($save->saveIncomingInvoice(new \Pggns\MidocoApi\Order\StructType\SaveIncomin
     print_r($save->getLastError());
 }
 /**
+ * Sample call for saveVoucherExpiryDate operation/method
+ */
+if ($save->saveVoucherExpiryDate(new \Pggns\MidocoApi\Order\StructType\SaveVoucherExpiryDateRequest()) !== false) {
+    print_r($save->getResult());
+} else {
+    print_r($save->getLastError());
+}
+/**
  * Sample call for saveOrdersDbiInfos operation/method
  */
 if ($save->saveOrdersDbiInfos(new \Pggns\MidocoApi\Order\StructType\SaveOrdersDbiInfosRequest()) !== false) {
@@ -1894,6 +1926,14 @@ if ($save->saveFlightTimeChangeEmail(new \Pggns\MidocoApi\Order\StructType\SaveF
  * Sample call for saveBillingDocDbiInfos operation/method
  */
 if ($save->saveBillingDocDbiInfos(new \Pggns\MidocoApi\Order\StructType\SaveBillingDocDbiInfosRequest()) !== false) {
+    print_r($save->getResult());
+} else {
+    print_r($save->getLastError());
+}
+/**
+ * Sample call for saveBillingOnlinePayment operation/method
+ */
+if ($save->saveBillingOnlinePayment(new \Pggns\MidocoApi\Order\StructType\SaveBillingOnlinePaymentRequest()) !== false) {
     print_r($save->getResult());
 } else {
     print_r($save->getLastError());
@@ -2054,6 +2094,22 @@ if ($save->saveSellItemAndRevenueBooking(new \Pggns\MidocoApi\Order\StructType\S
  * Sample call for saveTravelnoPurchaseAssignment operation/method
  */
 if ($save->saveTravelnoPurchaseAssignment(new \Pggns\MidocoApi\Order\StructType\SaveTravelnoPurchaseAssignmentRequest()) !== false) {
+    print_r($save->getResult());
+} else {
+    print_r($save->getLastError());
+}
+/**
+ * Sample call for saveDestinationManagerLink operation/method
+ */
+if ($save->saveDestinationManagerLink(new \Pggns\MidocoApi\Order\StructType\SaveDestinationManagerLinkRequest()) !== false) {
+    print_r($save->getResult());
+} else {
+    print_r($save->getLastError());
+}
+/**
+ * Sample call for saveOrderIcalContent operation/method
+ */
+if ($save->saveOrderIcalContent(new \Pggns\MidocoApi\Order\StructType\SaveOrderICalContentRequest()) !== false) {
     print_r($save->getResult());
 } else {
     print_r($save->getLastError());
@@ -2323,6 +2379,14 @@ if ($search->searchTssProtocol(new \Pggns\MidocoApi\Order\StructType\SearchTssPr
  * Sample call for searchDSFinVKExport operation/method
  */
 if ($search->searchDSFinVKExport(new \Pggns\MidocoApi\Order\StructType\SearchDSFinVKExportRequest()) !== false) {
+    print_r($search->getResult());
+} else {
+    print_r($search->getLastError());
+}
+/**
+ * Sample call for searchOrderPortalDocuments operation/method
+ */
+if ($search->searchOrderPortalDocuments(new \Pggns\MidocoApi\Order\StructType\SearchOrderPortalDocumentsRequest()) !== false) {
     print_r($search->getResult());
 } else {
     print_r($search->getLastError());
@@ -2669,6 +2733,14 @@ if ($delete->deleteTravelnoPurchaseAssignment(new \Pggns\MidocoApi\Order\StructT
     print_r($delete->getLastError());
 }
 /**
+ * Sample call for deleteDestinationManagerLink operation/method
+ */
+if ($delete->deleteDestinationManagerLink(new \Pggns\MidocoApi\Order\StructType\DeleteDestinationManagerLinkRequest()) !== false) {
+    print_r($delete->getResult());
+} else {
+    print_r($delete->getLastError());
+}
+/**
  * Samples for Create ServiceType
  */
 $create = new \Pggns\MidocoApi\Order\ServiceType\Create($options);
@@ -2802,6 +2874,14 @@ if ($prepare->prepareAgencyProvision(new \Pggns\MidocoApi\Order\StructType\Prepa
  * Sample call for prepareGroupAdvisorCommission operation/method
  */
 if ($prepare->prepareGroupAdvisorCommission(new \Pggns\MidocoApi\Order\StructType\PrepareGroupAdvisorCommissionRequest()) !== false) {
+    print_r($prepare->getResult());
+} else {
+    print_r($prepare->getLastError());
+}
+/**
+ * Sample call for prepareDunningOrders operation/method
+ */
+if ($prepare->prepareDunningOrders(new \Pggns\MidocoApi\Order\StructType\PrepareDunningOrdersRequest()) !== false) {
     print_r($prepare->getResult());
 } else {
     print_r($prepare->getLastError());
@@ -3017,6 +3097,22 @@ if ($void->voidReceipt(new \Pggns\MidocoApi\Order\StructType\VoidReceiptRequest(
  * Sample call for voidJournalEntry operation/method
  */
 if ($void->voidJournalEntry(new \Pggns\MidocoApi\Order\StructType\VoidJournalEntryRequest()) !== false) {
+    print_r($void->getResult());
+} else {
+    print_r($void->getLastError());
+}
+/**
+ * Sample call for voidSupplierAgencySettlementBooking operation/method
+ */
+if ($void->voidSupplierAgencySettlementBooking(new \Pggns\MidocoApi\Order\StructType\VoidSupplierAgencySettlementBookingRequest()) !== false) {
+    print_r($void->getResult());
+} else {
+    print_r($void->getLastError());
+}
+/**
+ * Sample call for voidSupplierAgencySettlement operation/method
+ */
+if ($void->voidSupplierAgencySettlement(new \Pggns\MidocoApi\Order\StructType\VoidSupplierAgencySettlementRequest()) !== false) {
     print_r($void->getResult());
 } else {
     print_r($void->getLastError());
@@ -3243,6 +3339,14 @@ if ($execute->executeMediatorSettlementLevel(new \Pggns\MidocoApi\Order\StructTy
  * Sample call for executeGroupAdvisorCommission operation/method
  */
 if ($execute->executeGroupAdvisorCommission(new \Pggns\MidocoApi\Order\StructType\ExecuteGroupAdvisorSettlementRequest()) !== false) {
+    print_r($execute->getResult());
+} else {
+    print_r($execute->getLastError());
+}
+/**
+ * Sample call for executeDunning operation/method
+ */
+if ($execute->executeDunning(new \Pggns\MidocoApi\Order\StructType\ExecuteDunningRequest()) !== false) {
     print_r($execute->getResult());
 } else {
     print_r($execute->getLastError());
@@ -3837,6 +3941,14 @@ if ($book->bookSupplierAgencySettlementBooking(new \Pggns\MidocoApi\Order\Struct
     print_r($book->getLastError());
 }
 /**
+ * Sample call for bookSupplierAgencySettlement operation/method
+ */
+if ($book->bookSupplierAgencySettlement(new \Pggns\MidocoApi\Order\StructType\BookSupplierAgencySettlementRequest()) !== false) {
+    print_r($book->getResult());
+} else {
+    print_r($book->getLastError());
+}
+/**
  * Sample call for bookAdviceSettlement operation/method
  */
 if ($book->bookAdviceSettlement(new \Pggns\MidocoApi\Order\StructType\BookAdviceSettlementRequest()) !== false) {
@@ -4013,17 +4125,17 @@ if ($process->processSofortTransaction(new \Pggns\MidocoApi\Order\StructType\Pro
     print_r($process->getLastError());
 }
 /**
- * Sample call for processFairplaneFlightData operation/method
+ * Sample call for processCompensation2GoNotification operation/method
  */
-if ($process->processFairplaneFlightData(new \Pggns\MidocoApi\Order\StructType\ProcessFairplaneFlightDataRequest()) !== false) {
+if ($process->processCompensation2GoNotification(new \Pggns\MidocoApi\Order\StructType\ProcessCompensation2GoNotificationRequest()) !== false) {
     print_r($process->getResult());
 } else {
     print_r($process->getLastError());
 }
 /**
- * Sample call for processCompensation2GoNotification operation/method
+ * Sample call for processFairplaneFlightData operation/method
  */
-if ($process->processCompensation2GoNotification(new \Pggns\MidocoApi\Order\StructType\ProcessCompensation2GoNotificationRequest()) !== false) {
+if ($process->processFairplaneFlightData(new \Pggns\MidocoApi\Order\StructType\ProcessFairplaneFlightDataRequest()) !== false) {
     print_r($process->getResult());
 } else {
     print_r($process->getLastError());
@@ -4040,6 +4152,19 @@ if ($split->splitSupplAgencySettlemBook(new \Pggns\MidocoApi\Order\StructType\Sp
     print_r($split->getResult());
 } else {
     print_r($split->getLastError());
+}
+/**
+ * Samples for Undo ServiceType
+ */
+$undo = new \Pggns\MidocoApi\Order\ServiceType\Undo($options);
+$undo->setSoapHeaderMidocoCredentials($MidocoCredentials);
+/**
+ * Sample call for undoSplitSupplAgencySettlemBook operation/method
+ */
+if ($undo->undoSplitSupplAgencySettlemBook(new \Pggns\MidocoApi\Order\StructType\UndoSplitSupplAgencySettlemBookRequest()) !== false) {
+    print_r($undo->getResult());
+} else {
+    print_r($undo->getLastError());
 }
 /**
  * Samples for Agency ServiceType
@@ -4246,6 +4371,14 @@ if ($generate->generateInvoiceFile(new \Pggns\MidocoApi\Order\StructType\Generat
     print_r($generate->getLastError());
 }
 /**
+ * Sample call for generateDestinationManagerEmail operation/method
+ */
+if ($generate->generateDestinationManagerEmail(new \Pggns\MidocoApi\Order\StructType\GenerateDestinationManagerEmailRequest()) !== false) {
+    print_r($generate->getResult());
+} else {
+    print_r($generate->getLastError());
+}
+/**
  * Samples for Pseudo ServiceType
  */
 $pseudo = new \Pggns\MidocoApi\Order\ServiceType\Pseudo($options);
@@ -4408,4 +4541,25 @@ if ($handle->handleBookingDotComNotification(new \Pggns\MidocoApi\Order\StructTy
     print_r($handle->getResult());
 } else {
     print_r($handle->getLastError());
+}
+/**
+ * Sample call for handleBookingDotComNotificationV3 operation/method
+ */
+if ($handle->handleBookingDotComNotificationV3(new \Pggns\MidocoApi\Order\StructType\HandleBookingDotComNotificationV3Request()) !== false) {
+    print_r($handle->getResult());
+} else {
+    print_r($handle->getLastError());
+}
+/**
+ * Samples for Lock ServiceType
+ */
+$lock = new \Pggns\MidocoApi\Order\ServiceType\Lock($options);
+$lock->setSoapHeaderMidocoCredentials($MidocoCredentials);
+/**
+ * Sample call for lockOrderOption operation/method
+ */
+if ($lock->lockOrderOption(new \Pggns\MidocoApi\Order\StructType\LockOrderOptionRequest()) !== false) {
+    print_r($lock->getResult());
+} else {
+    print_r($lock->getLastError());
 }

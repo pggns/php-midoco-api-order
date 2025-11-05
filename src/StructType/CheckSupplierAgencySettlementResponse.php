@@ -24,14 +24,26 @@ class CheckSupplierAgencySettlementResponse extends AbstractStructBase
      */
     protected ?array $MidocoFault = null;
     /**
+     * The MidocoSupplierAgencySettlement
+     * Meta information extracted from the WSDL
+     * - maxOccurs: 1
+     * - minOccurs: 0
+     * - ref: MidocoSupplierAgencySettlement
+     * @var \Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlement|null
+     */
+    protected ?\Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlement $MidocoSupplierAgencySettlement = null;
+    /**
      * Constructor method for CheckSupplierAgencySettlementResponse
      * @uses CheckSupplierAgencySettlementResponse::setMidocoFault()
+     * @uses CheckSupplierAgencySettlementResponse::setMidocoSupplierAgencySettlement()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoFaultType[] $midocoFault
+     * @param \Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlement $midocoSupplierAgencySettlement
      */
-    public function __construct(?array $midocoFault = null)
+    public function __construct(?array $midocoFault = null, ?\Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlement $midocoSupplierAgencySettlement = null)
     {
         $this
-            ->setMidocoFault($midocoFault);
+            ->setMidocoFault($midocoFault)
+            ->setMidocoSupplierAgencySettlement($midocoSupplierAgencySettlement);
     }
     /**
      * Get MidocoFault value
@@ -97,6 +109,25 @@ class CheckSupplierAgencySettlementResponse extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('The MidocoFault property can only contain items of type \Pggns\MidocoApi\Order\StructType\MidocoFaultType, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
         }
         $this->MidocoFault[] = $item;
+        
+        return $this;
+    }
+    /**
+     * Get MidocoSupplierAgencySettlement value
+     * @return \Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlement|null
+     */
+    public function getMidocoSupplierAgencySettlement(): ?\Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlement
+    {
+        return $this->MidocoSupplierAgencySettlement;
+    }
+    /**
+     * Set MidocoSupplierAgencySettlement value
+     * @param \Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlement $midocoSupplierAgencySettlement
+     * @return \Pggns\MidocoApi\Order\StructType\CheckSupplierAgencySettlementResponse
+     */
+    public function setMidocoSupplierAgencySettlement(?\Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlement $midocoSupplierAgencySettlement = null): self
+    {
+        $this->MidocoSupplierAgencySettlement = $midocoSupplierAgencySettlement;
         
         return $this;
     }

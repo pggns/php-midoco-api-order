@@ -108,9 +108,36 @@ class Generate extends AbstractSoapClientBase
         }
     }
     /**
+     * Method to call the operation originally named generateDestinationManagerEmail
+     * Meta information extracted from the WSDL
+     * - SOAPHeaderNames: MidocoCredentials
+     * - SOAPHeaderNamespaces: http://www.midoco.de/system
+     * - SOAPHeaderTypes: \Pggns\MidocoApi\Order\StructType\MidocoCredentialsType
+     * - SOAPHeaders: required
+     * @uses AbstractSoapClientBase::getSoapClient()
+     * @uses AbstractSoapClientBase::setResult()
+     * @uses AbstractSoapClientBase::saveLastError()
+     * @param \Pggns\MidocoApi\Order\StructType\GenerateDestinationManagerEmailRequest $paramGenerateDestinationManagerEmailRequest
+     * @return \Pggns\MidocoApi\Order\StructType\GenerateDestinationManagerEmailResponse|bool
+     */
+    public function generateDestinationManagerEmail(\Pggns\MidocoApi\Order\StructType\GenerateDestinationManagerEmailRequest $paramGenerateDestinationManagerEmailRequest)
+    {
+        try {
+            $this->setResult($resultGenerateDestinationManagerEmail = $this->getSoapClient()->__soapCall('generateDestinationManagerEmail', [
+                $paramGenerateDestinationManagerEmailRequest,
+            ], [], [], $this->outputHeaders));
+        
+            return $resultGenerateDestinationManagerEmail;
+        } catch (SoapFault $soapFault) {
+            $this->saveLastError(__METHOD__, $soapFault);
+        
+            return false;
+        }
+    }
+    /**
      * Returns the result
      * @see AbstractSoapClientBase::getResult()
-     * @return \Pggns\MidocoApi\Order\StructType\GenerateCsvForBatchInvoicingResponse|\Pggns\MidocoApi\Order\StructType\GenerateCsvForCollectiveBillingResponse|\Pggns\MidocoApi\Order\StructType\GenerateInvoiceFileResponse
+     * @return \Pggns\MidocoApi\Order\StructType\GenerateCsvForBatchInvoicingResponse|\Pggns\MidocoApi\Order\StructType\GenerateCsvForCollectiveBillingResponse|\Pggns\MidocoApi\Order\StructType\GenerateDestinationManagerEmailResponse|\Pggns\MidocoApi\Order\StructType\GenerateInvoiceFileResponse
      */
     public function getResult()
     {

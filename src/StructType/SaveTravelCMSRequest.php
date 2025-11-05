@@ -35,6 +35,11 @@ class SaveTravelCMSRequest extends AbstractStructBase
      */
     protected ?int $itemId = null;
     /**
+     * The position
+     * @var int|null
+     */
+    protected ?int $position = null;
+    /**
      * The status
      * @var string|null
      */
@@ -50,22 +55,25 @@ class SaveTravelCMSRequest extends AbstractStructBase
      * @uses SaveTravelCMSRequest::setSupplierId()
      * @uses SaveTravelCMSRequest::setHotelcode()
      * @uses SaveTravelCMSRequest::setItemId()
+     * @uses SaveTravelCMSRequest::setPosition()
      * @uses SaveTravelCMSRequest::setStatus()
      * @uses SaveTravelCMSRequest::setErrorInfo()
      * @param \DOMDocument|string|null $any
      * @param string $supplierId
      * @param string $hotelcode
      * @param int $itemId
+     * @param int $position
      * @param string $status
      * @param string $errorInfo
      */
-    public function __construct($any = null, ?string $supplierId = null, ?string $hotelcode = null, ?int $itemId = null, ?string $status = null, ?string $errorInfo = null)
+    public function __construct($any = null, ?string $supplierId = null, ?string $hotelcode = null, ?int $itemId = null, ?int $position = null, ?string $status = null, ?string $errorInfo = null)
     {
         $this
             ->setAny($any)
             ->setSupplierId($supplierId)
             ->setHotelcode($hotelcode)
             ->setItemId($itemId)
+            ->setPosition($position)
             ->setStatus($status)
             ->setErrorInfo($errorInfo);
     }
@@ -168,6 +176,29 @@ class SaveTravelCMSRequest extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($itemId, true), gettype($itemId)), __LINE__);
         }
         $this->itemId = $itemId;
+        
+        return $this;
+    }
+    /**
+     * Get position value
+     * @return int|null
+     */
+    public function getPosition(): ?int
+    {
+        return $this->position;
+    }
+    /**
+     * Set position value
+     * @param int $position
+     * @return \Pggns\MidocoApi\Order\StructType\SaveTravelCMSRequest
+     */
+    public function setPosition(?int $position = null): self
+    {
+        // validation for constraint: int
+        if (!is_null($position) && !(is_int($position) || ctype_digit($position))) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($position, true), gettype($position)), __LINE__);
+        }
+        $this->position = $position;
         
         return $this;
     }

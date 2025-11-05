@@ -152,6 +152,14 @@ class CcPayment extends AbstractStructBase
      */
     protected ?string $initialEcomTransactionId = null;
     /**
+     * The externalId
+     * Meta information extracted from the WSDL
+     * - documentation: extra external ID of the initial successful ECOM transaction. Used as reference in every subsequent debit transaction
+     * - minOccurs: 0
+     * @var string|null
+     */
+    protected ?string $externalId = null;
+    /**
      * The position
      * @var int|null
      */
@@ -175,6 +183,7 @@ class CcPayment extends AbstractStructBase
      * @uses CcPayment::setV3ds()
      * @uses CcPayment::setDstid()
      * @uses CcPayment::setInitialEcomTransactionId()
+     * @uses CcPayment::setExternalId()
      * @uses CcPayment::setPosition()
      * @param string $ccType
      * @param string $ccNumber
@@ -193,9 +202,10 @@ class CcPayment extends AbstractStructBase
      * @param string $v3ds
      * @param string $dstid
      * @param string $initialEcomTransactionId
+     * @param string $externalId
      * @param int $position
      */
-    public function __construct(?string $ccType = null, ?string $ccNumber = null, ?string $ccValidYear = null, ?string $ccValidMonth = null, ?string $cvcCode = null, ?array $ccAdditionalInfo = null, ?string $cardHolder = null, ?array $ccToken = null, ?string $paymentChannelIndicator = null, ?string $cardholderAuthVerification = null, ?string $electronicCommerceIndicator = null, ?string $xid = null, ?float $authAmount = null, ?float $remainingAuthAmount = null, ?string $v3ds = null, ?string $dstid = null, ?string $initialEcomTransactionId = null, ?int $position = null)
+    public function __construct(?string $ccType = null, ?string $ccNumber = null, ?string $ccValidYear = null, ?string $ccValidMonth = null, ?string $cvcCode = null, ?array $ccAdditionalInfo = null, ?string $cardHolder = null, ?array $ccToken = null, ?string $paymentChannelIndicator = null, ?string $cardholderAuthVerification = null, ?string $electronicCommerceIndicator = null, ?string $xid = null, ?float $authAmount = null, ?float $remainingAuthAmount = null, ?string $v3ds = null, ?string $dstid = null, ?string $initialEcomTransactionId = null, ?string $externalId = null, ?int $position = null)
     {
         $this
             ->setCcType($ccType)
@@ -215,6 +225,7 @@ class CcPayment extends AbstractStructBase
             ->setV3ds($v3ds)
             ->setDstid($dstid)
             ->setInitialEcomTransactionId($initialEcomTransactionId)
+            ->setExternalId($externalId)
             ->setPosition($position);
     }
     /**
@@ -705,6 +716,29 @@ class CcPayment extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($initialEcomTransactionId, true), gettype($initialEcomTransactionId)), __LINE__);
         }
         $this->initialEcomTransactionId = $initialEcomTransactionId;
+        
+        return $this;
+    }
+    /**
+     * Get externalId value
+     * @return string|null
+     */
+    public function getExternalId(): ?string
+    {
+        return $this->externalId;
+    }
+    /**
+     * Set externalId value
+     * @param string $externalId
+     * @return \Pggns\MidocoApi\Order\StructType\CcPayment
+     */
+    public function setExternalId(?string $externalId = null): self
+    {
+        // validation for constraint: string
+        if (!is_null($externalId) && !is_string($externalId)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($externalId, true), gettype($externalId)), __LINE__);
+        }
+        $this->externalId = $externalId;
         
         return $this;
     }

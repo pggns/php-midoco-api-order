@@ -48,26 +48,34 @@ class VoidBillingDocumentRequest extends AbstractStructBase
      */
     protected ?bool $voidWithVoidPositions = null;
     /**
+     * The creationUserId
+     * @var int|null
+     */
+    protected ?int $creationUserId = null;
+    /**
      * Constructor method for VoidBillingDocumentRequest
      * @uses VoidBillingDocumentRequest::setMidocoBillingDocument()
      * @uses VoidBillingDocumentRequest::setUsedDocumentNo()
      * @uses VoidBillingDocumentRequest::setFinishDocument()
      * @uses VoidBillingDocumentRequest::setCreditOnlinePayments()
      * @uses VoidBillingDocumentRequest::setVoidWithVoidPositions()
+     * @uses VoidBillingDocumentRequest::setCreationUserId()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBillingDocument $midocoBillingDocument
      * @param int $usedDocumentNo
      * @param bool $finishDocument
      * @param bool $creditOnlinePayments
      * @param bool $voidWithVoidPositions
+     * @param int $creationUserId
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoBillingDocument $midocoBillingDocument = null, ?int $usedDocumentNo = null, ?bool $finishDocument = true, ?bool $creditOnlinePayments = true, ?bool $voidWithVoidPositions = true)
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoBillingDocument $midocoBillingDocument = null, ?int $usedDocumentNo = null, ?bool $finishDocument = true, ?bool $creditOnlinePayments = true, ?bool $voidWithVoidPositions = true, ?int $creationUserId = null)
     {
         $this
             ->setMidocoBillingDocument($midocoBillingDocument)
             ->setUsedDocumentNo($usedDocumentNo)
             ->setFinishDocument($finishDocument)
             ->setCreditOnlinePayments($creditOnlinePayments)
-            ->setVoidWithVoidPositions($voidWithVoidPositions);
+            ->setVoidWithVoidPositions($voidWithVoidPositions)
+            ->setCreationUserId($creationUserId);
     }
     /**
      * Get MidocoBillingDocument value
@@ -177,6 +185,29 @@ class VoidBillingDocumentRequest extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($voidWithVoidPositions, true), gettype($voidWithVoidPositions)), __LINE__);
         }
         $this->voidWithVoidPositions = $voidWithVoidPositions;
+        
+        return $this;
+    }
+    /**
+     * Get creationUserId value
+     * @return int|null
+     */
+    public function getCreationUserId(): ?int
+    {
+        return $this->creationUserId;
+    }
+    /**
+     * Set creationUserId value
+     * @param int $creationUserId
+     * @return \Pggns\MidocoApi\Order\StructType\VoidBillingDocumentRequest
+     */
+    public function setCreationUserId(?int $creationUserId = null): self
+    {
+        // validation for constraint: int
+        if (!is_null($creationUserId) && !(is_int($creationUserId) || ctype_digit($creationUserId))) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($creationUserId, true), gettype($creationUserId)), __LINE__);
+        }
+        $this->creationUserId = $creationUserId;
         
         return $this;
     }

@@ -10,7 +10,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for ticket StructType
  * Meta information extracted from the WSDL
- * - documentation: Document information (mostly tickets for scheduled flights, for BSP settlement)
+ * - documentation: ticket remark | ticket attribute | Document information (mostly tickets for scheduled flights, for BSP settlement)
  * @subpackage Structs
  */
 #[\AllowDynamicProperties]
@@ -23,6 +23,24 @@ class Ticket extends AbstractStructBase
      * @var int
      */
     protected int $position;
+    /**
+     * The flight_attribute
+     * Meta information extracted from the WSDL
+     * - maxOccurs: unbounded
+     * - minOccurs: 0
+     * - ref: flight-attribute
+     * @var \Pggns\MidocoApi\Order\StructType\Flight_attribute[]
+     */
+    protected ?array $flight_attribute = null;
+    /**
+     * The flight_remark
+     * Meta information extracted from the WSDL
+     * - maxOccurs: unbounded
+     * - minOccurs: 0
+     * - ref: flight-remark
+     * @var \Pggns\MidocoApi\Order\StructType\Flight_remark[]
+     */
+    protected ?array $flight_remark = null;
     /**
      * The crs
      * Meta information extracted from the WSDL
@@ -306,6 +324,13 @@ class Ticket extends AbstractStructBase
      */
     protected ?array $saving = null;
     /**
+     * The destination_code
+     * Meta information extracted from the WSDL
+     * - minOccurs: 0
+     * @var string|null
+     */
+    protected ?string $destination_code = null;
+    /**
      * The price_ref
      * Meta information extracted from the WSDL
      * - documentation: declaring a price-ref is used to provide a different price than total-price to the customer (customers price = total-price + margin) the price referenced is normally in section flight-price. This is mainly used to cover IT-Tickets
@@ -319,6 +344,24 @@ class Ticket extends AbstractStructBase
      * @var int|null
      */
     protected ?int $configuration_ref = null;
+    /**
+     * The flightAttribute
+     * Meta information extracted from the WSDL
+     * - maxOccurs: unbounded
+     * - minOccurs: 0
+     * - ref: flightAttribute
+     * @var \Pggns\MidocoApi\Order\StructType\FlightAttribute[]
+     */
+    protected ?array $flightAttribute = null;
+    /**
+     * The flightRemark
+     * Meta information extracted from the WSDL
+     * - maxOccurs: unbounded
+     * - minOccurs: 0
+     * - ref: flightRemark
+     * @var \Pggns\MidocoApi\Order\StructType\FlightRemark[]
+     */
+    protected ?array $flightRemark = null;
     /**
      * The ticketType
      * @var string|null
@@ -565,6 +608,13 @@ class Ticket extends AbstractStructBase
      */
     protected ?string $originalCurrency = null;
     /**
+     * The destinationCode
+     * Meta information extracted from the WSDL
+     * - minOccurs: 0
+     * @var string|null
+     */
+    protected ?string $destinationCode = null;
+    /**
      * The priceRef
      * Meta information extracted from the WSDL
      * - documentation: declaring a priceRef is used to provide a different price than totalPrice to the customer (customers price = totalPrice + margin) the price referenced is normally in section flightPrice. This is mainly used to cover IT-Tickets
@@ -586,6 +636,8 @@ class Ticket extends AbstractStructBase
     /**
      * Constructor method for ticket
      * @uses Ticket::setPosition()
+     * @uses Ticket::setFlight_attribute()
+     * @uses Ticket::setFlight_remark()
      * @uses Ticket::setCrs()
      * @uses Ticket::setTicket_type()
      * @uses Ticket::setTicket_subtype()
@@ -628,8 +680,11 @@ class Ticket extends AbstractStructBase
      * @uses Ticket::setOriginal_currency()
      * @uses Ticket::setFilekey()
      * @uses Ticket::setSaving()
+     * @uses Ticket::setDestination_code()
      * @uses Ticket::setPrice_ref()
      * @uses Ticket::setConfiguration_ref()
+     * @uses Ticket::setFlightAttribute()
+     * @uses Ticket::setFlightRemark()
      * @uses Ticket::setTicketType()
      * @uses Ticket::setTicketSubtype()
      * @uses Ticket::setTicketSubgroupEmd()
@@ -667,10 +722,13 @@ class Ticket extends AbstractStructBase
      * @uses Ticket::setCancellationFee()
      * @uses Ticket::setOriginalAmount()
      * @uses Ticket::setOriginalCurrency()
+     * @uses Ticket::setDestinationCode()
      * @uses Ticket::setPriceRef()
      * @uses Ticket::setConfigurationRef()
      * @uses Ticket::setPassenger()
      * @param int $position
+     * @param \Pggns\MidocoApi\Order\StructType\Flight_attribute[] $flight_attribute
+     * @param \Pggns\MidocoApi\Order\StructType\Flight_remark[] $flight_remark
      * @param string $crs
      * @param string $ticket_type
      * @param string $ticket_subtype
@@ -713,8 +771,11 @@ class Ticket extends AbstractStructBase
      * @param string $original_currency
      * @param string $filekey
      * @param \Pggns\MidocoApi\Order\StructType\Saving[] $saving
+     * @param string $destination_code
      * @param int $price_ref
      * @param int $configuration_ref
+     * @param \Pggns\MidocoApi\Order\StructType\FlightAttribute[] $flightAttribute
+     * @param \Pggns\MidocoApi\Order\StructType\FlightRemark[] $flightRemark
      * @param string $ticketType
      * @param string $ticketSubtype
      * @param string $ticketSubgroupEmd
@@ -752,14 +813,17 @@ class Ticket extends AbstractStructBase
      * @param float $cancellationFee
      * @param float $originalAmount
      * @param string $originalCurrency
+     * @param string $destinationCode
      * @param int $priceRef
      * @param int $configurationRef
      * @param \Pggns\MidocoApi\Order\StructType\Passenger $passenger
      */
-    public function __construct(int $position, ?string $crs = null, ?string $ticket_type = null, ?string $ticket_subtype = null, ?string $ticket_subgroup_emd = null, ?string $ticket_doc_subtype_description = null, ?string $ticket_no = null, ?string $ticket_no_conj = null, ?string $bsp_validator = null, ?string $check_digit = null, ?string $ticket_media = null, ?string $payment_type = null, ?string $extPaymentType = null, ?float $base_fare = null, ?string $fare_type = null, ?array $tax_information = null, ?float $total_tax = null, ?float $commission_percent = null, ?float $commission_amount = null, ?float $commission_vat_amount = null, ?float $wholesale_price = null, ?float $total_price = null, ?string $currency = null, ?string $ticket_designator = null, ?string $segment_assignment = null, ?string $person_assignment = null, ?string $it_information = null, ?string $ticketing_agent = null, ?string $ticketing_pcc = null, ?string $bsp_agency = null, ?string $travel_date = null, ?string $issue_date = null, ?\Pggns\MidocoApi\Order\StructType\Cc_information $cc_information = null, ?bool $is_domestic = null, ?string $ticketing_city = null, ?string $vat_content = null, ?string $exchange_information = null, ?float $airline_fee = null, ?float $cancellation_fee = null, ?float $original_amount = null, ?string $original_currency = null, ?string $filekey = null, ?array $saving = null, ?int $price_ref = null, ?int $configuration_ref = null, ?string $ticketType = null, ?string $ticketSubtype = null, ?string $ticketSubgroupEmd = null, ?string $ticketDocSubtypeDescription = null, ?string $ticketNo = null, ?string $ticketNoConj = null, ?string $bspValidator = null, ?string $checkDigit = null, ?string $ticketMedia = null, ?string $paymentType = null, ?float $baseFare = null, ?string $fareType = null, ?array $taxInformation = null, ?float $totalTax = null, ?float $commissionPercent = null, ?float $commissionAmount = null, ?float $commissionVatAmount = null, ?float $wholesalePrice = null, ?float $totalPrice = null, ?string $ticketDesignator = null, ?string $segmentAssignment = null, ?string $personAssignment = null, ?string $itInformation = null, ?string $ticketingAgent = null, ?string $ticketingPcc = null, ?string $bspAgency = null, ?string $travelDate = null, ?string $issueDate = null, ?\Pggns\MidocoApi\Order\StructType\CcInformation $ccInformation = null, ?bool $isDomestic = null, ?string $ticketingCity = null, ?string $vatContent = null, ?string $exchangeInformation = null, ?float $airlineFee = null, ?float $cancellationFee = null, ?float $originalAmount = null, ?string $originalCurrency = null, ?int $priceRef = null, ?int $configurationRef = null, ?\Pggns\MidocoApi\Order\StructType\Passenger $passenger = null)
+    public function __construct(int $position, ?array $flight_attribute = null, ?array $flight_remark = null, ?string $crs = null, ?string $ticket_type = null, ?string $ticket_subtype = null, ?string $ticket_subgroup_emd = null, ?string $ticket_doc_subtype_description = null, ?string $ticket_no = null, ?string $ticket_no_conj = null, ?string $bsp_validator = null, ?string $check_digit = null, ?string $ticket_media = null, ?string $payment_type = null, ?string $extPaymentType = null, ?float $base_fare = null, ?string $fare_type = null, ?array $tax_information = null, ?float $total_tax = null, ?float $commission_percent = null, ?float $commission_amount = null, ?float $commission_vat_amount = null, ?float $wholesale_price = null, ?float $total_price = null, ?string $currency = null, ?string $ticket_designator = null, ?string $segment_assignment = null, ?string $person_assignment = null, ?string $it_information = null, ?string $ticketing_agent = null, ?string $ticketing_pcc = null, ?string $bsp_agency = null, ?string $travel_date = null, ?string $issue_date = null, ?\Pggns\MidocoApi\Order\StructType\Cc_information $cc_information = null, ?bool $is_domestic = null, ?string $ticketing_city = null, ?string $vat_content = null, ?string $exchange_information = null, ?float $airline_fee = null, ?float $cancellation_fee = null, ?float $original_amount = null, ?string $original_currency = null, ?string $filekey = null, ?array $saving = null, ?string $destination_code = null, ?int $price_ref = null, ?int $configuration_ref = null, ?array $flightAttribute = null, ?array $flightRemark = null, ?string $ticketType = null, ?string $ticketSubtype = null, ?string $ticketSubgroupEmd = null, ?string $ticketDocSubtypeDescription = null, ?string $ticketNo = null, ?string $ticketNoConj = null, ?string $bspValidator = null, ?string $checkDigit = null, ?string $ticketMedia = null, ?string $paymentType = null, ?float $baseFare = null, ?string $fareType = null, ?array $taxInformation = null, ?float $totalTax = null, ?float $commissionPercent = null, ?float $commissionAmount = null, ?float $commissionVatAmount = null, ?float $wholesalePrice = null, ?float $totalPrice = null, ?string $ticketDesignator = null, ?string $segmentAssignment = null, ?string $personAssignment = null, ?string $itInformation = null, ?string $ticketingAgent = null, ?string $ticketingPcc = null, ?string $bspAgency = null, ?string $travelDate = null, ?string $issueDate = null, ?\Pggns\MidocoApi\Order\StructType\CcInformation $ccInformation = null, ?bool $isDomestic = null, ?string $ticketingCity = null, ?string $vatContent = null, ?string $exchangeInformation = null, ?float $airlineFee = null, ?float $cancellationFee = null, ?float $originalAmount = null, ?string $originalCurrency = null, ?string $destinationCode = null, ?int $priceRef = null, ?int $configurationRef = null, ?\Pggns\MidocoApi\Order\StructType\Passenger $passenger = null)
     {
         $this
             ->setPosition($position)
+            ->setFlight_attribute($flight_attribute)
+            ->setFlight_remark($flight_remark)
             ->setCrs($crs)
             ->setTicket_type($ticket_type)
             ->setTicket_subtype($ticket_subtype)
@@ -802,8 +866,11 @@ class Ticket extends AbstractStructBase
             ->setOriginal_currency($original_currency)
             ->setFilekey($filekey)
             ->setSaving($saving)
+            ->setDestination_code($destination_code)
             ->setPrice_ref($price_ref)
             ->setConfiguration_ref($configuration_ref)
+            ->setFlightAttribute($flightAttribute)
+            ->setFlightRemark($flightRemark)
             ->setTicketType($ticketType)
             ->setTicketSubtype($ticketSubtype)
             ->setTicketSubgroupEmd($ticketSubgroupEmd)
@@ -841,6 +908,7 @@ class Ticket extends AbstractStructBase
             ->setCancellationFee($cancellationFee)
             ->setOriginalAmount($originalAmount)
             ->setOriginalCurrency($originalCurrency)
+            ->setDestinationCode($destinationCode)
             ->setPriceRef($priceRef)
             ->setConfigurationRef($configurationRef)
             ->setPassenger($passenger);
@@ -865,6 +933,140 @@ class Ticket extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($position, true), gettype($position)), __LINE__);
         }
         $this->position = $position;
+        
+        return $this;
+    }
+    /**
+     * Get flight_attribute value
+     * @return \Pggns\MidocoApi\Order\StructType\Flight_attribute[]
+     */
+    public function getFlight_attribute(): ?array
+    {
+        return $this->{'flight-attribute'};
+    }
+    /**
+     * This method is responsible for validating the value(s) passed to the setFlight_attribute method
+     * This method is willingly generated in order to preserve the one-line inline validation within the setFlight_attribute method
+     * This has to validate that each item contained by the array match the itemType constraint
+     * @param array $values
+     * @return string A non-empty message if the values does not match the validation rules
+     */
+    public static function validateFlight_attributeForArrayConstraintFromSetFlight_attribute(?array $values = []): string
+    {
+        if (!is_array($values)) {
+            return '';
+        }
+        $message = '';
+        $invalidValues = [];
+        foreach ($values as $ticketFlight_attributeItem) {
+            // validation for constraint: itemType
+            if (!$ticketFlight_attributeItem instanceof \Pggns\MidocoApi\Order\StructType\Flight_attribute) {
+                $invalidValues[] = is_object($ticketFlight_attributeItem) ? get_class($ticketFlight_attributeItem) : sprintf('%s(%s)', gettype($ticketFlight_attributeItem), var_export($ticketFlight_attributeItem, true));
+            }
+        }
+        if (!empty($invalidValues)) {
+            $message = sprintf('The flight_attribute property can only contain items of type \Pggns\MidocoApi\Order\StructType\Flight_attribute, %s given', is_object($invalidValues) ? get_class($invalidValues) : (is_array($invalidValues) ? implode(', ', $invalidValues) : gettype($invalidValues)));
+        }
+        unset($invalidValues);
+        
+        return $message;
+    }
+    /**
+     * Set flight_attribute value
+     * @throws InvalidArgumentException
+     * @param \Pggns\MidocoApi\Order\StructType\Flight_attribute[] $flight_attribute
+     * @return \Pggns\MidocoApi\Order\StructType\Ticket
+     */
+    public function setFlight_attribute(?array $flight_attribute = null): self
+    {
+        // validation for constraint: array
+        if ('' !== ($flight_attributeArrayErrorMessage = self::validateFlight_attributeForArrayConstraintFromSetFlight_attribute($flight_attribute))) {
+            throw new InvalidArgumentException($flight_attributeArrayErrorMessage, __LINE__);
+        }
+        $this->flight_attribute = $this->{'flight-attribute'} = $flight_attribute;
+        
+        return $this;
+    }
+    /**
+     * Add item to flight_attribute value
+     * @throws InvalidArgumentException
+     * @param \Pggns\MidocoApi\Order\StructType\Flight_attribute $item
+     * @return \Pggns\MidocoApi\Order\StructType\Ticket
+     */
+    public function addToFlight_attribute(\Pggns\MidocoApi\Order\StructType\Flight_attribute $item): self
+    {
+        // validation for constraint: itemType
+        if (!$item instanceof \Pggns\MidocoApi\Order\StructType\Flight_attribute) {
+            throw new InvalidArgumentException(sprintf('The flight_attribute property can only contain items of type \Pggns\MidocoApi\Order\StructType\Flight_attribute, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
+        }
+        $this->flight_attribute[] = $this->{'flight-attribute'}[] = $item;
+        
+        return $this;
+    }
+    /**
+     * Get flight_remark value
+     * @return \Pggns\MidocoApi\Order\StructType\Flight_remark[]
+     */
+    public function getFlight_remark(): ?array
+    {
+        return $this->{'flight-remark'};
+    }
+    /**
+     * This method is responsible for validating the value(s) passed to the setFlight_remark method
+     * This method is willingly generated in order to preserve the one-line inline validation within the setFlight_remark method
+     * This has to validate that each item contained by the array match the itemType constraint
+     * @param array $values
+     * @return string A non-empty message if the values does not match the validation rules
+     */
+    public static function validateFlight_remarkForArrayConstraintFromSetFlight_remark(?array $values = []): string
+    {
+        if (!is_array($values)) {
+            return '';
+        }
+        $message = '';
+        $invalidValues = [];
+        foreach ($values as $ticketFlight_remarkItem) {
+            // validation for constraint: itemType
+            if (!$ticketFlight_remarkItem instanceof \Pggns\MidocoApi\Order\StructType\Flight_remark) {
+                $invalidValues[] = is_object($ticketFlight_remarkItem) ? get_class($ticketFlight_remarkItem) : sprintf('%s(%s)', gettype($ticketFlight_remarkItem), var_export($ticketFlight_remarkItem, true));
+            }
+        }
+        if (!empty($invalidValues)) {
+            $message = sprintf('The flight_remark property can only contain items of type \Pggns\MidocoApi\Order\StructType\Flight_remark, %s given', is_object($invalidValues) ? get_class($invalidValues) : (is_array($invalidValues) ? implode(', ', $invalidValues) : gettype($invalidValues)));
+        }
+        unset($invalidValues);
+        
+        return $message;
+    }
+    /**
+     * Set flight_remark value
+     * @throws InvalidArgumentException
+     * @param \Pggns\MidocoApi\Order\StructType\Flight_remark[] $flight_remark
+     * @return \Pggns\MidocoApi\Order\StructType\Ticket
+     */
+    public function setFlight_remark(?array $flight_remark = null): self
+    {
+        // validation for constraint: array
+        if ('' !== ($flight_remarkArrayErrorMessage = self::validateFlight_remarkForArrayConstraintFromSetFlight_remark($flight_remark))) {
+            throw new InvalidArgumentException($flight_remarkArrayErrorMessage, __LINE__);
+        }
+        $this->flight_remark = $this->{'flight-remark'} = $flight_remark;
+        
+        return $this;
+    }
+    /**
+     * Add item to flight_remark value
+     * @throws InvalidArgumentException
+     * @param \Pggns\MidocoApi\Order\StructType\Flight_remark $item
+     * @return \Pggns\MidocoApi\Order\StructType\Ticket
+     */
+    public function addToFlight_remark(\Pggns\MidocoApi\Order\StructType\Flight_remark $item): self
+    {
+        // validation for constraint: itemType
+        if (!$item instanceof \Pggns\MidocoApi\Order\StructType\Flight_remark) {
+            throw new InvalidArgumentException(sprintf('The flight_remark property can only contain items of type \Pggns\MidocoApi\Order\StructType\Flight_remark, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
+        }
+        $this->flight_remark[] = $this->{'flight-remark'}[] = $item;
         
         return $this;
     }
@@ -1942,6 +2144,29 @@ class Ticket extends AbstractStructBase
         return $this;
     }
     /**
+     * Get destination_code value
+     * @return string|null
+     */
+    public function getDestination_code(): ?string
+    {
+        return $this->{'destination-code'};
+    }
+    /**
+     * Set destination_code value
+     * @param string $destination_code
+     * @return \Pggns\MidocoApi\Order\StructType\Ticket
+     */
+    public function setDestination_code(?string $destination_code = null): self
+    {
+        // validation for constraint: string
+        if (!is_null($destination_code) && !is_string($destination_code)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($destination_code, true), gettype($destination_code)), __LINE__);
+        }
+        $this->destination_code = $this->{'destination-code'} = $destination_code;
+        
+        return $this;
+    }
+    /**
      * Get price_ref value
      * @return int|null
      */
@@ -1984,6 +2209,140 @@ class Ticket extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($configuration_ref, true), gettype($configuration_ref)), __LINE__);
         }
         $this->configuration_ref = $this->{'configuration-ref'} = $configuration_ref;
+        
+        return $this;
+    }
+    /**
+     * Get flightAttribute value
+     * @return \Pggns\MidocoApi\Order\StructType\FlightAttribute[]
+     */
+    public function getFlightAttribute(): ?array
+    {
+        return $this->flightAttribute;
+    }
+    /**
+     * This method is responsible for validating the value(s) passed to the setFlightAttribute method
+     * This method is willingly generated in order to preserve the one-line inline validation within the setFlightAttribute method
+     * This has to validate that each item contained by the array match the itemType constraint
+     * @param array $values
+     * @return string A non-empty message if the values does not match the validation rules
+     */
+    public static function validateFlightAttributeForArrayConstraintFromSetFlightAttribute(?array $values = []): string
+    {
+        if (!is_array($values)) {
+            return '';
+        }
+        $message = '';
+        $invalidValues = [];
+        foreach ($values as $ticketFlightAttributeItem) {
+            // validation for constraint: itemType
+            if (!$ticketFlightAttributeItem instanceof \Pggns\MidocoApi\Order\StructType\FlightAttribute) {
+                $invalidValues[] = is_object($ticketFlightAttributeItem) ? get_class($ticketFlightAttributeItem) : sprintf('%s(%s)', gettype($ticketFlightAttributeItem), var_export($ticketFlightAttributeItem, true));
+            }
+        }
+        if (!empty($invalidValues)) {
+            $message = sprintf('The flightAttribute property can only contain items of type \Pggns\MidocoApi\Order\StructType\FlightAttribute, %s given', is_object($invalidValues) ? get_class($invalidValues) : (is_array($invalidValues) ? implode(', ', $invalidValues) : gettype($invalidValues)));
+        }
+        unset($invalidValues);
+        
+        return $message;
+    }
+    /**
+     * Set flightAttribute value
+     * @throws InvalidArgumentException
+     * @param \Pggns\MidocoApi\Order\StructType\FlightAttribute[] $flightAttribute
+     * @return \Pggns\MidocoApi\Order\StructType\Ticket
+     */
+    public function setFlightAttribute(?array $flightAttribute = null): self
+    {
+        // validation for constraint: array
+        if ('' !== ($flightAttributeArrayErrorMessage = self::validateFlightAttributeForArrayConstraintFromSetFlightAttribute($flightAttribute))) {
+            throw new InvalidArgumentException($flightAttributeArrayErrorMessage, __LINE__);
+        }
+        $this->flightAttribute = $flightAttribute;
+        
+        return $this;
+    }
+    /**
+     * Add item to flightAttribute value
+     * @throws InvalidArgumentException
+     * @param \Pggns\MidocoApi\Order\StructType\FlightAttribute $item
+     * @return \Pggns\MidocoApi\Order\StructType\Ticket
+     */
+    public function addToFlightAttribute(\Pggns\MidocoApi\Order\StructType\FlightAttribute $item): self
+    {
+        // validation for constraint: itemType
+        if (!$item instanceof \Pggns\MidocoApi\Order\StructType\FlightAttribute) {
+            throw new InvalidArgumentException(sprintf('The flightAttribute property can only contain items of type \Pggns\MidocoApi\Order\StructType\FlightAttribute, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
+        }
+        $this->flightAttribute[] = $item;
+        
+        return $this;
+    }
+    /**
+     * Get flightRemark value
+     * @return \Pggns\MidocoApi\Order\StructType\FlightRemark[]
+     */
+    public function getFlightRemark(): ?array
+    {
+        return $this->flightRemark;
+    }
+    /**
+     * This method is responsible for validating the value(s) passed to the setFlightRemark method
+     * This method is willingly generated in order to preserve the one-line inline validation within the setFlightRemark method
+     * This has to validate that each item contained by the array match the itemType constraint
+     * @param array $values
+     * @return string A non-empty message if the values does not match the validation rules
+     */
+    public static function validateFlightRemarkForArrayConstraintFromSetFlightRemark(?array $values = []): string
+    {
+        if (!is_array($values)) {
+            return '';
+        }
+        $message = '';
+        $invalidValues = [];
+        foreach ($values as $ticketFlightRemarkItem) {
+            // validation for constraint: itemType
+            if (!$ticketFlightRemarkItem instanceof \Pggns\MidocoApi\Order\StructType\FlightRemark) {
+                $invalidValues[] = is_object($ticketFlightRemarkItem) ? get_class($ticketFlightRemarkItem) : sprintf('%s(%s)', gettype($ticketFlightRemarkItem), var_export($ticketFlightRemarkItem, true));
+            }
+        }
+        if (!empty($invalidValues)) {
+            $message = sprintf('The flightRemark property can only contain items of type \Pggns\MidocoApi\Order\StructType\FlightRemark, %s given', is_object($invalidValues) ? get_class($invalidValues) : (is_array($invalidValues) ? implode(', ', $invalidValues) : gettype($invalidValues)));
+        }
+        unset($invalidValues);
+        
+        return $message;
+    }
+    /**
+     * Set flightRemark value
+     * @throws InvalidArgumentException
+     * @param \Pggns\MidocoApi\Order\StructType\FlightRemark[] $flightRemark
+     * @return \Pggns\MidocoApi\Order\StructType\Ticket
+     */
+    public function setFlightRemark(?array $flightRemark = null): self
+    {
+        // validation for constraint: array
+        if ('' !== ($flightRemarkArrayErrorMessage = self::validateFlightRemarkForArrayConstraintFromSetFlightRemark($flightRemark))) {
+            throw new InvalidArgumentException($flightRemarkArrayErrorMessage, __LINE__);
+        }
+        $this->flightRemark = $flightRemark;
+        
+        return $this;
+    }
+    /**
+     * Add item to flightRemark value
+     * @throws InvalidArgumentException
+     * @param \Pggns\MidocoApi\Order\StructType\FlightRemark $item
+     * @return \Pggns\MidocoApi\Order\StructType\Ticket
+     */
+    public function addToFlightRemark(\Pggns\MidocoApi\Order\StructType\FlightRemark $item): self
+    {
+        // validation for constraint: itemType
+        if (!$item instanceof \Pggns\MidocoApi\Order\StructType\FlightRemark) {
+            throw new InvalidArgumentException(sprintf('The flightRemark property can only contain items of type \Pggns\MidocoApi\Order\StructType\FlightRemark, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
+        }
+        $this->flightRemark[] = $item;
         
         return $this;
     }
@@ -2898,6 +3257,29 @@ class Ticket extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($originalCurrency, true), gettype($originalCurrency)), __LINE__);
         }
         $this->originalCurrency = $originalCurrency;
+        
+        return $this;
+    }
+    /**
+     * Get destinationCode value
+     * @return string|null
+     */
+    public function getDestinationCode(): ?string
+    {
+        return $this->destinationCode;
+    }
+    /**
+     * Set destinationCode value
+     * @param string $destinationCode
+     * @return \Pggns\MidocoApi\Order\StructType\Ticket
+     */
+    public function setDestinationCode(?string $destinationCode = null): self
+    {
+        // validation for constraint: string
+        if (!is_null($destinationCode) && !is_string($destinationCode)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($destinationCode, true), gettype($destinationCode)), __LINE__);
+        }
+        $this->destinationCode = $destinationCode;
         
         return $this;
     }

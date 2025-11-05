@@ -89,9 +89,9 @@ class CustAddrDebitorPayment extends AbstractStructBase
      * The MidocoCrmCustomer
      * Meta information extracted from the WSDL
      * - ref: MidocoCrmCustomer
-     * @var \Pggns\MidocoApi\Order\StructType\CrmCustomerDTO|null
+     * @var \Pggns\MidocoApi\Order\StructType\MidocoCrmCustomer|null
      */
-    protected ?\Pggns\MidocoApi\Order\StructType\CrmCustomerDTO $MidocoCrmCustomer = null;
+    protected ?\Pggns\MidocoApi\Order\StructType\MidocoCrmCustomer $MidocoCrmCustomer = null;
     /**
      * The custOrder
      * @var int|null
@@ -117,10 +117,10 @@ class CustAddrDebitorPayment extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCrmDebitCard[] $midocoCrmDebitCard
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCrmBonusCard[] $midocoCrmBonusCard
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCrmCriteria[] $midocoCrmCriteria
-     * @param \Pggns\MidocoApi\Order\StructType\CrmCustomerDTO $midocoCrmCustomer
+     * @param \Pggns\MidocoApi\Order\StructType\MidocoCrmCustomer $midocoCrmCustomer
      * @param int $custOrder
      */
-    public function __construct(?array $midocoCrmAddress = null, ?array $midocoDebitor = null, ?\Pggns\MidocoApi\Order\StructType\CrmCustomerPaymentDTO $midocoCustomerPayment = null, ?array $midocoContactEntry = null, ?array $midocoCrmCcCard = null, ?array $midocoCrmDebitCard = null, ?array $midocoCrmBonusCard = null, ?array $midocoCrmCriteria = null, ?\Pggns\MidocoApi\Order\StructType\CrmCustomerDTO $midocoCrmCustomer = null, ?int $custOrder = null)
+    public function __construct(?array $midocoCrmAddress = null, ?array $midocoDebitor = null, ?\Pggns\MidocoApi\Order\StructType\CrmCustomerPaymentDTO $midocoCustomerPayment = null, ?array $midocoContactEntry = null, ?array $midocoCrmCcCard = null, ?array $midocoCrmDebitCard = null, ?array $midocoCrmBonusCard = null, ?array $midocoCrmCriteria = null, ?\Pggns\MidocoApi\Order\StructType\MidocoCrmCustomer $midocoCrmCustomer = null, ?int $custOrder = null)
     {
         $this
             ->setMidocoCrmAddress($midocoCrmAddress)
@@ -624,18 +624,18 @@ class CustAddrDebitorPayment extends AbstractStructBase
     }
     /**
      * Get MidocoCrmCustomer value
-     * @return \Pggns\MidocoApi\Order\StructType\CrmCustomerDTO|null
+     * @return \Pggns\MidocoApi\Order\StructType\MidocoCrmCustomer|null
      */
-    public function getMidocoCrmCustomer(): ?\Pggns\MidocoApi\Order\StructType\CrmCustomerDTO
+    public function getMidocoCrmCustomer(): ?\Pggns\MidocoApi\Order\StructType\MidocoCrmCustomer
     {
         return $this->MidocoCrmCustomer;
     }
     /**
      * Set MidocoCrmCustomer value
-     * @param \Pggns\MidocoApi\Order\StructType\CrmCustomerDTO $midocoCrmCustomer
+     * @param \Pggns\MidocoApi\Order\StructType\MidocoCrmCustomer $midocoCrmCustomer
      * @return \Pggns\MidocoApi\Order\StructType\CustAddrDebitorPayment
      */
-    public function setMidocoCrmCustomer(?\Pggns\MidocoApi\Order\StructType\CrmCustomerDTO $midocoCrmCustomer = null): self
+    public function setMidocoCrmCustomer(?\Pggns\MidocoApi\Order\StructType\MidocoCrmCustomer $midocoCrmCustomer = null): self
     {
         $this->MidocoCrmCustomer = $midocoCrmCustomer;
         

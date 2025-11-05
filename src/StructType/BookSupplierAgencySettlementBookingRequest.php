@@ -39,23 +39,33 @@ class BookSupplierAgencySettlementBookingRequest extends AbstractStructBase
      */
     protected ?bool $ignoreErrors = null;
     /**
+     * The preventProcessOrder
+     * Meta information extracted from the WSDL
+     * - default: false
+     * @var bool|null
+     */
+    protected ?bool $preventProcessOrder = null;
+    /**
      * Constructor method for BookSupplierAgencySettlementBookingRequest
      * @uses BookSupplierAgencySettlementBookingRequest::setSettlementId()
      * @uses BookSupplierAgencySettlementBookingRequest::setBookingPosition()
      * @uses BookSupplierAgencySettlementBookingRequest::setCreateMissingBooking()
      * @uses BookSupplierAgencySettlementBookingRequest::setIgnoreErrors()
+     * @uses BookSupplierAgencySettlementBookingRequest::setPreventProcessOrder()
      * @param int $settlementId
      * @param int $bookingPosition
      * @param bool $createMissingBooking
      * @param bool $ignoreErrors
+     * @param bool $preventProcessOrder
      */
-    public function __construct(?int $settlementId = null, ?int $bookingPosition = null, ?bool $createMissingBooking = false, ?bool $ignoreErrors = false)
+    public function __construct(?int $settlementId = null, ?int $bookingPosition = null, ?bool $createMissingBooking = false, ?bool $ignoreErrors = false, ?bool $preventProcessOrder = false)
     {
         $this
             ->setSettlementId($settlementId)
             ->setBookingPosition($bookingPosition)
             ->setCreateMissingBooking($createMissingBooking)
-            ->setIgnoreErrors($ignoreErrors);
+            ->setIgnoreErrors($ignoreErrors)
+            ->setPreventProcessOrder($preventProcessOrder);
     }
     /**
      * Get settlementId value
@@ -146,6 +156,29 @@ class BookSupplierAgencySettlementBookingRequest extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($ignoreErrors, true), gettype($ignoreErrors)), __LINE__);
         }
         $this->ignoreErrors = $ignoreErrors;
+        
+        return $this;
+    }
+    /**
+     * Get preventProcessOrder value
+     * @return bool|null
+     */
+    public function getPreventProcessOrder(): ?bool
+    {
+        return $this->preventProcessOrder;
+    }
+    /**
+     * Set preventProcessOrder value
+     * @param bool $preventProcessOrder
+     * @return \Pggns\MidocoApi\Order\StructType\BookSupplierAgencySettlementBookingRequest
+     */
+    public function setPreventProcessOrder(?bool $preventProcessOrder = false): self
+    {
+        // validation for constraint: boolean
+        if (!is_null($preventProcessOrder) && !is_bool($preventProcessOrder)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($preventProcessOrder, true), gettype($preventProcessOrder)), __LINE__);
+        }
+        $this->preventProcessOrder = $preventProcessOrder;
         
         return $this;
     }

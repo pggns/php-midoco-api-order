@@ -15,13 +15,14 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 class GetCmsHotelDataRequestType extends AbstractStructBase
 {
     /**
-     * The hotelCodes
+     * The MidocoTravelCms
      * Meta information extracted from the WSDL
      * - maxOccurs: unbounded
      * - minOccurs: 0
-     * @var string[]
+     * - ref: MidocoTravelCms
+     * @var \Pggns\MidocoApi\Order\StructType\TravelCmDTO[]
      */
-    protected ?array $hotelCodes = null;
+    protected ?array $MidocoTravelCms = null;
     /**
      * The supplierId
      * @var string|null
@@ -38,88 +39,96 @@ class GetCmsHotelDataRequestType extends AbstractStructBase
      */
     protected ?int $itemId = null;
     /**
+     * The position
+     * @var int|null
+     */
+    protected ?int $position = null;
+    /**
      * Constructor method for GetCmsHotelDataRequestType
-     * @uses GetCmsHotelDataRequestType::setHotelCodes()
+     * @uses GetCmsHotelDataRequestType::setMidocoTravelCms()
      * @uses GetCmsHotelDataRequestType::setSupplierId()
      * @uses GetCmsHotelDataRequestType::setHotelcode()
      * @uses GetCmsHotelDataRequestType::setItemId()
-     * @param string[] $hotelCodes
+     * @uses GetCmsHotelDataRequestType::setPosition()
+     * @param \Pggns\MidocoApi\Order\StructType\TravelCmDTO[] $midocoTravelCms
      * @param string $supplierId
      * @param string $hotelcode
      * @param int $itemId
+     * @param int $position
      */
-    public function __construct(?array $hotelCodes = null, ?string $supplierId = null, ?string $hotelcode = null, ?int $itemId = null)
+    public function __construct(?array $midocoTravelCms = null, ?string $supplierId = null, ?string $hotelcode = null, ?int $itemId = null, ?int $position = null)
     {
         $this
-            ->setHotelCodes($hotelCodes)
+            ->setMidocoTravelCms($midocoTravelCms)
             ->setSupplierId($supplierId)
             ->setHotelcode($hotelcode)
-            ->setItemId($itemId);
+            ->setItemId($itemId)
+            ->setPosition($position);
     }
     /**
-     * Get hotelCodes value
-     * @return string[]
+     * Get MidocoTravelCms value
+     * @return \Pggns\MidocoApi\Order\StructType\TravelCmDTO[]
      */
-    public function getHotelCodes(): ?array
+    public function getMidocoTravelCms(): ?array
     {
-        return $this->hotelCodes;
+        return $this->MidocoTravelCms;
     }
     /**
-     * This method is responsible for validating the value(s) passed to the setHotelCodes method
-     * This method is willingly generated in order to preserve the one-line inline validation within the setHotelCodes method
+     * This method is responsible for validating the value(s) passed to the setMidocoTravelCms method
+     * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTravelCms method
      * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateHotelCodesForArrayConstraintFromSetHotelCodes(?array $values = []): string
+    public static function validateMidocoTravelCmsForArrayConstraintFromSetMidocoTravelCms(?array $values = []): string
     {
         if (!is_array($values)) {
             return '';
         }
         $message = '';
         $invalidValues = [];
-        foreach ($values as $getCmsHotelDataRequestTypeHotelCodesItem) {
+        foreach ($values as $getCmsHotelDataRequestTypeMidocoTravelCmsItem) {
             // validation for constraint: itemType
-            if (!is_string($getCmsHotelDataRequestTypeHotelCodesItem)) {
-                $invalidValues[] = is_object($getCmsHotelDataRequestTypeHotelCodesItem) ? get_class($getCmsHotelDataRequestTypeHotelCodesItem) : sprintf('%s(%s)', gettype($getCmsHotelDataRequestTypeHotelCodesItem), var_export($getCmsHotelDataRequestTypeHotelCodesItem, true));
+            if (!$getCmsHotelDataRequestTypeMidocoTravelCmsItem instanceof \Pggns\MidocoApi\Order\StructType\TravelCmDTO) {
+                $invalidValues[] = is_object($getCmsHotelDataRequestTypeMidocoTravelCmsItem) ? get_class($getCmsHotelDataRequestTypeMidocoTravelCmsItem) : sprintf('%s(%s)', gettype($getCmsHotelDataRequestTypeMidocoTravelCmsItem), var_export($getCmsHotelDataRequestTypeMidocoTravelCmsItem, true));
             }
         }
         if (!empty($invalidValues)) {
-            $message = sprintf('The hotelCodes property can only contain items of type string, %s given', is_object($invalidValues) ? get_class($invalidValues) : (is_array($invalidValues) ? implode(', ', $invalidValues) : gettype($invalidValues)));
+            $message = sprintf('The MidocoTravelCms property can only contain items of type \Pggns\MidocoApi\Order\StructType\TravelCmDTO, %s given', is_object($invalidValues) ? get_class($invalidValues) : (is_array($invalidValues) ? implode(', ', $invalidValues) : gettype($invalidValues)));
         }
         unset($invalidValues);
         
         return $message;
     }
     /**
-     * Set hotelCodes value
+     * Set MidocoTravelCms value
      * @throws InvalidArgumentException
-     * @param string[] $hotelCodes
+     * @param \Pggns\MidocoApi\Order\StructType\TravelCmDTO[] $midocoTravelCms
      * @return \Pggns\MidocoApi\Order\StructType\GetCmsHotelDataRequestType
      */
-    public function setHotelCodes(?array $hotelCodes = null): self
+    public function setMidocoTravelCms(?array $midocoTravelCms = null): self
     {
         // validation for constraint: array
-        if ('' !== ($hotelCodesArrayErrorMessage = self::validateHotelCodesForArrayConstraintFromSetHotelCodes($hotelCodes))) {
-            throw new InvalidArgumentException($hotelCodesArrayErrorMessage, __LINE__);
+        if ('' !== ($midocoTravelCmsArrayErrorMessage = self::validateMidocoTravelCmsForArrayConstraintFromSetMidocoTravelCms($midocoTravelCms))) {
+            throw new InvalidArgumentException($midocoTravelCmsArrayErrorMessage, __LINE__);
         }
-        $this->hotelCodes = $hotelCodes;
+        $this->MidocoTravelCms = $midocoTravelCms;
         
         return $this;
     }
     /**
-     * Add item to hotelCodes value
+     * Add item to MidocoTravelCms value
      * @throws InvalidArgumentException
-     * @param string $item
+     * @param \Pggns\MidocoApi\Order\StructType\TravelCmDTO $item
      * @return \Pggns\MidocoApi\Order\StructType\GetCmsHotelDataRequestType
      */
-    public function addToHotelCodes(string $item): self
+    public function addToMidocoTravelCms(\Pggns\MidocoApi\Order\StructType\TravelCmDTO $item): self
     {
         // validation for constraint: itemType
-        if (!is_string($item)) {
-            throw new InvalidArgumentException(sprintf('The hotelCodes property can only contain items of type string, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
+        if (!$item instanceof \Pggns\MidocoApi\Order\StructType\TravelCmDTO) {
+            throw new InvalidArgumentException(sprintf('The MidocoTravelCms property can only contain items of type \Pggns\MidocoApi\Order\StructType\TravelCmDTO, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
         }
-        $this->hotelCodes[] = $item;
+        $this->MidocoTravelCms[] = $item;
         
         return $this;
     }
@@ -189,6 +198,29 @@ class GetCmsHotelDataRequestType extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($itemId, true), gettype($itemId)), __LINE__);
         }
         $this->itemId = $itemId;
+        
+        return $this;
+    }
+    /**
+     * Get position value
+     * @return int|null
+     */
+    public function getPosition(): ?int
+    {
+        return $this->position;
+    }
+    /**
+     * Set position value
+     * @param int $position
+     * @return \Pggns\MidocoApi\Order\StructType\GetCmsHotelDataRequestType
+     */
+    public function setPosition(?int $position = null): self
+    {
+        // validation for constraint: int
+        if (!is_null($position) && !(is_int($position) || ctype_digit($position))) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($position, true), gettype($position)), __LINE__);
+        }
+        $this->position = $position;
         
         return $this;
     }

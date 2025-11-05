@@ -19,7 +19,7 @@ class PrivateData_1 extends AbstractStructBase
     /**
      * The salutation
      * Meta information extracted from the WSDL
-     * - documentation: Salutation MR, MS, MRS, CHD, INF
+     * - documentation: Salutation in language specific form (Mr, Mrs, Herr, Frau etc).
      * @var string|null
      */
     protected ?string $salutation = null;
@@ -105,17 +105,14 @@ class PrivateData_1 extends AbstractStructBase
     }
     /**
      * Set salutation value
-     * @uses \Pggns\MidocoApi\Order\EnumType\SalutationType::valueIsValid()
-     * @uses \Pggns\MidocoApi\Order\EnumType\SalutationType::getValidValues()
-     * @throws InvalidArgumentException
      * @param string $salutation
      * @return \Pggns\MidocoApi\Order\StructType\PrivateData_1
      */
     public function setSalutation(?string $salutation = null): self
     {
-        // validation for constraint: enumeration
-        if (!\Pggns\MidocoApi\Order\EnumType\SalutationType::valueIsValid($salutation)) {
-            throw new InvalidArgumentException(sprintf('Invalid value(s) %s, please use one of: %s from enumeration class \Pggns\MidocoApi\Order\EnumType\SalutationType', is_array($salutation) ? implode(', ', $salutation) : var_export($salutation, true), implode(', ', \Pggns\MidocoApi\Order\EnumType\SalutationType::getValidValues())), __LINE__);
+        // validation for constraint: string
+        if (!is_null($salutation) && !is_string($salutation)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($salutation, true), gettype($salutation)), __LINE__);
         }
         $this->salutation = $salutation;
         

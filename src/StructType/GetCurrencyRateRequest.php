@@ -35,23 +35,47 @@ class GetCurrencyRateRequest extends AbstractStructBase
      */
     protected ?string $unitName = null;
     /**
+     * The sourceCurrency
+     * @var string|null
+     */
+    protected ?string $sourceCurrency = null;
+    /**
+     * The destCurrency
+     * @var string|null
+     */
+    protected ?string $destCurrency = null;
+    /**
+     * The currencyDate
+     * @var string|null
+     */
+    protected ?string $currencyDate = null;
+    /**
      * Constructor method for GetCurrencyRateRequest
      * @uses GetCurrencyRateRequest::setFromCurrency()
      * @uses GetCurrencyRateRequest::setToCurrency()
      * @uses GetCurrencyRateRequest::setDate()
      * @uses GetCurrencyRateRequest::setUnitName()
+     * @uses GetCurrencyRateRequest::setSourceCurrency()
+     * @uses GetCurrencyRateRequest::setDestCurrency()
+     * @uses GetCurrencyRateRequest::setCurrencyDate()
      * @param string $fromCurrency
      * @param string $toCurrency
      * @param string $date
      * @param string $unitName
+     * @param string $sourceCurrency
+     * @param string $destCurrency
+     * @param string $currencyDate
      */
-    public function __construct(?string $fromCurrency = null, ?string $toCurrency = null, ?string $date = null, ?string $unitName = null)
+    public function __construct(?string $fromCurrency = null, ?string $toCurrency = null, ?string $date = null, ?string $unitName = null, ?string $sourceCurrency = null, ?string $destCurrency = null, ?string $currencyDate = null)
     {
         $this
             ->setFromCurrency($fromCurrency)
             ->setToCurrency($toCurrency)
             ->setDate($date)
-            ->setUnitName($unitName);
+            ->setUnitName($unitName)
+            ->setSourceCurrency($sourceCurrency)
+            ->setDestCurrency($destCurrency)
+            ->setCurrencyDate($currencyDate);
     }
     /**
      * Get fromCurrency value
@@ -142,6 +166,75 @@ class GetCurrencyRateRequest extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($unitName, true), gettype($unitName)), __LINE__);
         }
         $this->unitName = $unitName;
+        
+        return $this;
+    }
+    /**
+     * Get sourceCurrency value
+     * @return string|null
+     */
+    public function getSourceCurrency(): ?string
+    {
+        return $this->sourceCurrency;
+    }
+    /**
+     * Set sourceCurrency value
+     * @param string $sourceCurrency
+     * @return \Pggns\MidocoApi\Order\StructType\GetCurrencyRateRequest
+     */
+    public function setSourceCurrency(?string $sourceCurrency = null): self
+    {
+        // validation for constraint: string
+        if (!is_null($sourceCurrency) && !is_string($sourceCurrency)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($sourceCurrency, true), gettype($sourceCurrency)), __LINE__);
+        }
+        $this->sourceCurrency = $sourceCurrency;
+        
+        return $this;
+    }
+    /**
+     * Get destCurrency value
+     * @return string|null
+     */
+    public function getDestCurrency(): ?string
+    {
+        return $this->destCurrency;
+    }
+    /**
+     * Set destCurrency value
+     * @param string $destCurrency
+     * @return \Pggns\MidocoApi\Order\StructType\GetCurrencyRateRequest
+     */
+    public function setDestCurrency(?string $destCurrency = null): self
+    {
+        // validation for constraint: string
+        if (!is_null($destCurrency) && !is_string($destCurrency)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($destCurrency, true), gettype($destCurrency)), __LINE__);
+        }
+        $this->destCurrency = $destCurrency;
+        
+        return $this;
+    }
+    /**
+     * Get currencyDate value
+     * @return string|null
+     */
+    public function getCurrencyDate(): ?string
+    {
+        return $this->currencyDate;
+    }
+    /**
+     * Set currencyDate value
+     * @param string $currencyDate
+     * @return \Pggns\MidocoApi\Order\StructType\GetCurrencyRateRequest
+     */
+    public function setCurrencyDate(?string $currencyDate = null): self
+    {
+        // validation for constraint: string
+        if (!is_null($currencyDate) && !is_string($currencyDate)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($currencyDate, true), gettype($currencyDate)), __LINE__);
+        }
+        $this->currencyDate = $currencyDate;
         
         return $this;
     }

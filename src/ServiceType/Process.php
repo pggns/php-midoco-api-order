@@ -108,33 +108,6 @@ class Process extends AbstractSoapClientBase
         }
     }
     /**
-     * Method to call the operation originally named processFairplaneFlightData
-     * Meta information extracted from the WSDL
-     * - SOAPHeaderNames: MidocoCredentials
-     * - SOAPHeaderNamespaces: http://www.midoco.de/system
-     * - SOAPHeaderTypes: \Pggns\MidocoApi\Order\StructType\MidocoCredentialsType
-     * - SOAPHeaders: required
-     * @uses AbstractSoapClientBase::getSoapClient()
-     * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::saveLastError()
-     * @param \Pggns\MidocoApi\Order\StructType\ProcessFairplaneFlightDataRequest $paramProcessFairplaneFlightDataRequest
-     * @return \Pggns\MidocoApi\Order\StructType\ProcessFairplaneFlightDataResponse|bool
-     */
-    public function processFairplaneFlightData(\Pggns\MidocoApi\Order\StructType\ProcessFairplaneFlightDataRequest $paramProcessFairplaneFlightDataRequest)
-    {
-        try {
-            $this->setResult($resultProcessFairplaneFlightData = $this->getSoapClient()->__soapCall('processFairplaneFlightData', [
-                $paramProcessFairplaneFlightDataRequest,
-            ], [], [], $this->outputHeaders));
-        
-            return $resultProcessFairplaneFlightData;
-        } catch (SoapFault $soapFault) {
-            $this->saveLastError(__METHOD__, $soapFault);
-        
-            return false;
-        }
-    }
-    /**
      * Method to call the operation originally named processCompensation2GoNotification
      * Meta information extracted from the WSDL
      * - SOAPHeaderNames: MidocoCredentials
@@ -155,6 +128,33 @@ class Process extends AbstractSoapClientBase
             ], [], [], $this->outputHeaders));
         
             return $resultProcessCompensation2GoNotification;
+        } catch (SoapFault $soapFault) {
+            $this->saveLastError(__METHOD__, $soapFault);
+        
+            return false;
+        }
+    }
+    /**
+     * Method to call the operation originally named processFairplaneFlightData
+     * Meta information extracted from the WSDL
+     * - SOAPHeaderNames: MidocoCredentials
+     * - SOAPHeaderNamespaces: http://www.midoco.de/system
+     * - SOAPHeaderTypes: \Pggns\MidocoApi\Order\StructType\MidocoCredentialsType
+     * - SOAPHeaders: required
+     * @uses AbstractSoapClientBase::getSoapClient()
+     * @uses AbstractSoapClientBase::setResult()
+     * @uses AbstractSoapClientBase::saveLastError()
+     * @param \Pggns\MidocoApi\Order\StructType\ProcessFairplaneFlightDataRequest $paramProcessFairplaneFlightDataRequest
+     * @return \Pggns\MidocoApi\Order\StructType\ProcessFairplaneFlightDataResponse|bool
+     */
+    public function processFairplaneFlightData(\Pggns\MidocoApi\Order\StructType\ProcessFairplaneFlightDataRequest $paramProcessFairplaneFlightDataRequest)
+    {
+        try {
+            $this->setResult($resultProcessFairplaneFlightData = $this->getSoapClient()->__soapCall('processFairplaneFlightData', [
+                $paramProcessFairplaneFlightDataRequest,
+            ], [], [], $this->outputHeaders));
+        
+            return $resultProcessFairplaneFlightData;
         } catch (SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
         

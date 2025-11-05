@@ -25,17 +25,27 @@ class VoidRevenueBookingRequest extends AbstractStructBase
      */
     protected ?int $avisDetailId = null;
     /**
+     * The preventProcessOrder
+     * Meta information extracted from the WSDL
+     * - default: false
+     * @var bool|null
+     */
+    protected ?bool $preventProcessOrder = null;
+    /**
      * Constructor method for VoidRevenueBookingRequest
      * @uses VoidRevenueBookingRequest::setRevenueId()
      * @uses VoidRevenueBookingRequest::setAvisDetailId()
+     * @uses VoidRevenueBookingRequest::setPreventProcessOrder()
      * @param int $revenueId
      * @param int $avisDetailId
+     * @param bool $preventProcessOrder
      */
-    public function __construct(?int $revenueId = null, ?int $avisDetailId = null)
+    public function __construct(?int $revenueId = null, ?int $avisDetailId = null, ?bool $preventProcessOrder = false)
     {
         $this
             ->setRevenueId($revenueId)
-            ->setAvisDetailId($avisDetailId);
+            ->setAvisDetailId($avisDetailId)
+            ->setPreventProcessOrder($preventProcessOrder);
     }
     /**
      * Get revenueId value
@@ -80,6 +90,29 @@ class VoidRevenueBookingRequest extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($avisDetailId, true), gettype($avisDetailId)), __LINE__);
         }
         $this->avisDetailId = $avisDetailId;
+        
+        return $this;
+    }
+    /**
+     * Get preventProcessOrder value
+     * @return bool|null
+     */
+    public function getPreventProcessOrder(): ?bool
+    {
+        return $this->preventProcessOrder;
+    }
+    /**
+     * Set preventProcessOrder value
+     * @param bool $preventProcessOrder
+     * @return \Pggns\MidocoApi\Order\StructType\VoidRevenueBookingRequest
+     */
+    public function setPreventProcessOrder(?bool $preventProcessOrder = false): self
+    {
+        // validation for constraint: boolean
+        if (!is_null($preventProcessOrder) && !is_bool($preventProcessOrder)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($preventProcessOrder, true), gettype($preventProcessOrder)), __LINE__);
+        }
+        $this->preventProcessOrder = $preventProcessOrder;
         
         return $this;
     }

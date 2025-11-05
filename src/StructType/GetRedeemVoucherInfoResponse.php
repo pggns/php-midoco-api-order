@@ -55,6 +55,11 @@ class GetRedeemVoucherInfoResponse extends AbstractStructBase
      */
     protected ?string $expiryDate = null;
     /**
+     * The additionalInfo
+     * @var string|null
+     */
+    protected ?string $additionalInfo = null;
+    /**
      * Constructor method for GetRedeemVoucherInfoResponse
      * @uses GetRedeemVoucherInfoResponse::setSoldBy()
      * @uses GetRedeemVoucherInfoResponse::setSoldAt()
@@ -64,6 +69,7 @@ class GetRedeemVoucherInfoResponse extends AbstractStructBase
      * @uses GetRedeemVoucherInfoResponse::setRedeemValue()
      * @uses GetRedeemVoucherInfoResponse::setRemainingValue()
      * @uses GetRedeemVoucherInfoResponse::setExpiryDate()
+     * @uses GetRedeemVoucherInfoResponse::setAdditionalInfo()
      * @param int $soldBy
      * @param string $soldAt
      * @param float $soldValue
@@ -72,8 +78,9 @@ class GetRedeemVoucherInfoResponse extends AbstractStructBase
      * @param float $redeemValue
      * @param float $remainingValue
      * @param string $expiryDate
+     * @param string $additionalInfo
      */
-    public function __construct(?int $soldBy = null, ?string $soldAt = null, ?float $soldValue = null, ?int $redeemBy = null, ?string $redeemAt = null, ?float $redeemValue = null, ?float $remainingValue = null, ?string $expiryDate = null)
+    public function __construct(?int $soldBy = null, ?string $soldAt = null, ?float $soldValue = null, ?int $redeemBy = null, ?string $redeemAt = null, ?float $redeemValue = null, ?float $remainingValue = null, ?string $expiryDate = null, ?string $additionalInfo = null)
     {
         $this
             ->setSoldBy($soldBy)
@@ -83,7 +90,8 @@ class GetRedeemVoucherInfoResponse extends AbstractStructBase
             ->setRedeemAt($redeemAt)
             ->setRedeemValue($redeemValue)
             ->setRemainingValue($remainingValue)
-            ->setExpiryDate($expiryDate);
+            ->setExpiryDate($expiryDate)
+            ->setAdditionalInfo($additionalInfo);
     }
     /**
      * Get soldBy value
@@ -266,6 +274,29 @@ class GetRedeemVoucherInfoResponse extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($expiryDate, true), gettype($expiryDate)), __LINE__);
         }
         $this->expiryDate = $expiryDate;
+        
+        return $this;
+    }
+    /**
+     * Get additionalInfo value
+     * @return string|null
+     */
+    public function getAdditionalInfo(): ?string
+    {
+        return $this->additionalInfo;
+    }
+    /**
+     * Set additionalInfo value
+     * @param string $additionalInfo
+     * @return \Pggns\MidocoApi\Order\StructType\GetRedeemVoucherInfoResponse
+     */
+    public function setAdditionalInfo(?string $additionalInfo = null): self
+    {
+        // validation for constraint: string
+        if (!is_null($additionalInfo) && !is_string($additionalInfo)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($additionalInfo, true), gettype($additionalInfo)), __LINE__);
+        }
+        $this->additionalInfo = $additionalInfo;
         
         return $this;
     }

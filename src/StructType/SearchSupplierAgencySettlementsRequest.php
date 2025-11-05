@@ -55,6 +55,11 @@ class SearchSupplierAgencySettlementsRequest extends AbstractStructBase
      */
     protected ?bool $checked = null;
     /**
+     * The includeIgnoredPositions
+     * @var bool|null
+     */
+    protected ?bool $includeIgnoredPositions = null;
+    /**
      * The settlementId
      * @var int|null
      */
@@ -79,6 +84,7 @@ class SearchSupplierAgencySettlementsRequest extends AbstractStructBase
      * @uses SearchSupplierAgencySettlementsRequest::setBookingId()
      * @uses SearchSupplierAgencySettlementsRequest::setBooked()
      * @uses SearchSupplierAgencySettlementsRequest::setChecked()
+     * @uses SearchSupplierAgencySettlementsRequest::setIncludeIgnoredPositions()
      * @uses SearchSupplierAgencySettlementsRequest::setSettlementId()
      * @uses SearchSupplierAgencySettlementsRequest::setSettlementParty()
      * @uses SearchSupplierAgencySettlementsRequest::setReceiptNo()
@@ -90,11 +96,12 @@ class SearchSupplierAgencySettlementsRequest extends AbstractStructBase
      * @param string $bookingId
      * @param bool $booked
      * @param bool $checked
+     * @param bool $includeIgnoredPositions
      * @param int $settlementId
      * @param string $settlementParty
      * @param string $receiptNo
      */
-    public function __construct(?string $creationDateFrom = null, ?string $creationDateTo = null, ?string $settlementDateFrom = null, ?string $settlementDateTo = null, ?string $supplierId = null, ?string $bookingId = null, ?bool $booked = null, ?bool $checked = null, ?int $settlementId = null, ?string $settlementParty = null, ?string $receiptNo = null)
+    public function __construct(?string $creationDateFrom = null, ?string $creationDateTo = null, ?string $settlementDateFrom = null, ?string $settlementDateTo = null, ?string $supplierId = null, ?string $bookingId = null, ?bool $booked = null, ?bool $checked = null, ?bool $includeIgnoredPositions = null, ?int $settlementId = null, ?string $settlementParty = null, ?string $receiptNo = null)
     {
         $this
             ->setCreationDateFrom($creationDateFrom)
@@ -105,6 +112,7 @@ class SearchSupplierAgencySettlementsRequest extends AbstractStructBase
             ->setBookingId($bookingId)
             ->setBooked($booked)
             ->setChecked($checked)
+            ->setIncludeIgnoredPositions($includeIgnoredPositions)
             ->setSettlementId($settlementId)
             ->setSettlementParty($settlementParty)
             ->setReceiptNo($receiptNo);
@@ -290,6 +298,29 @@ class SearchSupplierAgencySettlementsRequest extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($checked, true), gettype($checked)), __LINE__);
         }
         $this->checked = $checked;
+        
+        return $this;
+    }
+    /**
+     * Get includeIgnoredPositions value
+     * @return bool|null
+     */
+    public function getIncludeIgnoredPositions(): ?bool
+    {
+        return $this->includeIgnoredPositions;
+    }
+    /**
+     * Set includeIgnoredPositions value
+     * @param bool $includeIgnoredPositions
+     * @return \Pggns\MidocoApi\Order\StructType\SearchSupplierAgencySettlementsRequest
+     */
+    public function setIncludeIgnoredPositions(?bool $includeIgnoredPositions = null): self
+    {
+        // validation for constraint: boolean
+        if (!is_null($includeIgnoredPositions) && !is_bool($includeIgnoredPositions)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($includeIgnoredPositions, true), gettype($includeIgnoredPositions)), __LINE__);
+        }
+        $this->includeIgnoredPositions = $includeIgnoredPositions;
         
         return $this;
     }

@@ -135,6 +135,33 @@ class Prepare extends AbstractSoapClientBase
         }
     }
     /**
+     * Method to call the operation originally named prepareDunningOrders
+     * Meta information extracted from the WSDL
+     * - SOAPHeaderNames: MidocoCredentials
+     * - SOAPHeaderNamespaces: http://www.midoco.de/system
+     * - SOAPHeaderTypes: \Pggns\MidocoApi\Order\StructType\MidocoCredentialsType
+     * - SOAPHeaders: required
+     * @uses AbstractSoapClientBase::getSoapClient()
+     * @uses AbstractSoapClientBase::setResult()
+     * @uses AbstractSoapClientBase::saveLastError()
+     * @param \Pggns\MidocoApi\Order\StructType\PrepareDunningOrdersRequest $paramPrepareDunningOrdersRequest
+     * @return \Pggns\MidocoApi\Order\StructType\PrepareDunningOrdersResponse|bool
+     */
+    public function prepareDunningOrders(\Pggns\MidocoApi\Order\StructType\PrepareDunningOrdersRequest $paramPrepareDunningOrdersRequest)
+    {
+        try {
+            $this->setResult($resultPrepareDunningOrders = $this->getSoapClient()->__soapCall('prepareDunningOrders', [
+                $paramPrepareDunningOrdersRequest,
+            ], [], [], $this->outputHeaders));
+        
+            return $resultPrepareDunningOrders;
+        } catch (SoapFault $soapFault) {
+            $this->saveLastError(__METHOD__, $soapFault);
+        
+            return false;
+        }
+    }
+    /**
      * Method to call the operation originally named prepareAgenciesListForSettlement
      * Meta information extracted from the WSDL
      * - SOAPHeaderNames: MidocoCredentials
@@ -353,7 +380,7 @@ class Prepare extends AbstractSoapClientBase
     /**
      * Returns the result
      * @see AbstractSoapClientBase::getResult()
-     * @return \Pggns\MidocoApi\Order\StructType\PrepareAdviceInfoResponse|\Pggns\MidocoApi\Order\StructType\PrepareAgenciesListForSettlementResponse|\Pggns\MidocoApi\Order\StructType\PrepareAgencyProvisionResponse|\Pggns\MidocoApi\Order\StructType\PrepareBillingDocumentForCustomerResponse|\Pggns\MidocoApi\Order\StructType\PrepareDunningBillingsResponse|\Pggns\MidocoApi\Order\StructType\PrepareGroupAdvisorCommissionResponse|\Pggns\MidocoApi\Order\StructType\PrepareMediatorSettlementResponse|\Pggns\MidocoApi\Order\StructType\PrepareMidocoMailMessageResponse|\Pggns\MidocoApi\Order\StructType\PrepareMidocoSettlementResponse|\Pggns\MidocoApi\Order\StructType\PreparePseudoRevenueBookingResponse|\Pggns\MidocoApi\Order\StructType\PrepareSubOrdersResponse
+     * @return \Pggns\MidocoApi\Order\StructType\PrepareAdviceInfoResponse|\Pggns\MidocoApi\Order\StructType\PrepareAgenciesListForSettlementResponse|\Pggns\MidocoApi\Order\StructType\PrepareAgencyProvisionResponse|\Pggns\MidocoApi\Order\StructType\PrepareBillingDocumentForCustomerResponse|\Pggns\MidocoApi\Order\StructType\PrepareDunningBillingsResponse|\Pggns\MidocoApi\Order\StructType\PrepareDunningOrdersResponse|\Pggns\MidocoApi\Order\StructType\PrepareGroupAdvisorCommissionResponse|\Pggns\MidocoApi\Order\StructType\PrepareMediatorSettlementResponse|\Pggns\MidocoApi\Order\StructType\PrepareMidocoMailMessageResponse|\Pggns\MidocoApi\Order\StructType\PrepareMidocoSettlementResponse|\Pggns\MidocoApi\Order\StructType\PreparePseudoRevenueBookingResponse|\Pggns\MidocoApi\Order\StructType\PrepareSubOrdersResponse
      */
     public function getResult()
     {

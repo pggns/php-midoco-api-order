@@ -17,7 +17,8 @@ class GetCurrencyRateResponse extends AbstractStructBase
     /**
      * The MidocoCurrencyRate
      * Meta information extracted from the WSDL
-     * - ref: MidocoCurrencyRate
+     * - minOccurs: 0
+     * - ref: ordersd:MidocoCurrencyRate | MidocoCurrencyRate
      * @var \Pggns\MidocoApi\Order\StructType\MidocoCurrencyRate|null
      */
     protected ?\Pggns\MidocoApi\Order\StructType\MidocoCurrencyRate $MidocoCurrencyRate = null;

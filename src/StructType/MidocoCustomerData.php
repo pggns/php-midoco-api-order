@@ -20,7 +20,7 @@ class MidocoCustomerData extends CustomerDTO
      * - maxOccurs: unbounded
      * - minOccurs: 0
      * - ref: MidocoCrmPerson
-     * @var \Pggns\MidocoApi\Order\StructType\CrmPersonDTO[]
+     * @var \Pggns\MidocoApi\Order\StructType\MidocoCrmPerson[]
      */
     protected ?array $MidocoCrmPerson = null;
     /**
@@ -56,7 +56,7 @@ class MidocoCustomerData extends CustomerDTO
      * - maxOccurs: unbounded
      * - minOccurs: 0
      * - ref: MidocoCrmCompany
-     * @var \Pggns\MidocoApi\Order\StructType\CrmCompanyDTO[]
+     * @var \Pggns\MidocoApi\Order\StructType\MidocoCrmCompany[]
      */
     protected ?array $MidocoCrmCompany = null;
     /**
@@ -126,11 +126,11 @@ class MidocoCustomerData extends CustomerDTO
      * @uses MidocoCustomerData::setMidocoContactHistory()
      * @uses MidocoCustomerData::setMidocoCrmCustomerPayment()
      * @uses MidocoCustomerData::setMidocoCustomerTravel()
-     * @param \Pggns\MidocoApi\Order\StructType\CrmPersonDTO[] $midocoCrmPerson
+     * @param \Pggns\MidocoApi\Order\StructType\MidocoCrmPerson[] $midocoCrmPerson
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCrmNotice[] $midocoCrmNotice
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCrmAddress[] $midocoCrmAddress
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCrmCcCard[] $midocoCrmCcCard
-     * @param \Pggns\MidocoApi\Order\StructType\CrmCompanyDTO[] $midocoCrmCompany
+     * @param \Pggns\MidocoApi\Order\StructType\MidocoCrmCompany[] $midocoCrmCompany
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCrmCriteria[] $midocoCrmCriteria
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCrmDebitCard[] $midocoCrmDebitCard
      * @param \Pggns\MidocoApi\Order\StructType\DebitorDTO[] $midocoDebitor
@@ -155,7 +155,7 @@ class MidocoCustomerData extends CustomerDTO
     }
     /**
      * Get MidocoCrmPerson value
-     * @return \Pggns\MidocoApi\Order\StructType\CrmPersonDTO[]
+     * @return \Pggns\MidocoApi\Order\StructType\MidocoCrmPerson[]
      */
     public function getMidocoCrmPerson(): ?array
     {
@@ -177,12 +177,12 @@ class MidocoCustomerData extends CustomerDTO
         $invalidValues = [];
         foreach ($values as $midocoCustomerDataMidocoCrmPersonItem) {
             // validation for constraint: itemType
-            if (!$midocoCustomerDataMidocoCrmPersonItem instanceof \Pggns\MidocoApi\Order\StructType\CrmPersonDTO) {
+            if (!$midocoCustomerDataMidocoCrmPersonItem instanceof \Pggns\MidocoApi\Order\StructType\MidocoCrmPerson) {
                 $invalidValues[] = is_object($midocoCustomerDataMidocoCrmPersonItem) ? get_class($midocoCustomerDataMidocoCrmPersonItem) : sprintf('%s(%s)', gettype($midocoCustomerDataMidocoCrmPersonItem), var_export($midocoCustomerDataMidocoCrmPersonItem, true));
             }
         }
         if (!empty($invalidValues)) {
-            $message = sprintf('The MidocoCrmPerson property can only contain items of type \Pggns\MidocoApi\Order\StructType\CrmPersonDTO, %s given', is_object($invalidValues) ? get_class($invalidValues) : (is_array($invalidValues) ? implode(', ', $invalidValues) : gettype($invalidValues)));
+            $message = sprintf('The MidocoCrmPerson property can only contain items of type \Pggns\MidocoApi\Order\StructType\MidocoCrmPerson, %s given', is_object($invalidValues) ? get_class($invalidValues) : (is_array($invalidValues) ? implode(', ', $invalidValues) : gettype($invalidValues)));
         }
         unset($invalidValues);
         
@@ -191,7 +191,7 @@ class MidocoCustomerData extends CustomerDTO
     /**
      * Set MidocoCrmPerson value
      * @throws InvalidArgumentException
-     * @param \Pggns\MidocoApi\Order\StructType\CrmPersonDTO[] $midocoCrmPerson
+     * @param \Pggns\MidocoApi\Order\StructType\MidocoCrmPerson[] $midocoCrmPerson
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCustomerData
      */
     public function setMidocoCrmPerson(?array $midocoCrmPerson = null): self
@@ -207,14 +207,14 @@ class MidocoCustomerData extends CustomerDTO
     /**
      * Add item to MidocoCrmPerson value
      * @throws InvalidArgumentException
-     * @param \Pggns\MidocoApi\Order\StructType\CrmPersonDTO $item
+     * @param \Pggns\MidocoApi\Order\StructType\MidocoCrmPerson $item
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCustomerData
      */
-    public function addToMidocoCrmPerson(\Pggns\MidocoApi\Order\StructType\CrmPersonDTO $item): self
+    public function addToMidocoCrmPerson(\Pggns\MidocoApi\Order\StructType\MidocoCrmPerson $item): self
     {
         // validation for constraint: itemType
-        if (!$item instanceof \Pggns\MidocoApi\Order\StructType\CrmPersonDTO) {
-            throw new InvalidArgumentException(sprintf('The MidocoCrmPerson property can only contain items of type \Pggns\MidocoApi\Order\StructType\CrmPersonDTO, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
+        if (!$item instanceof \Pggns\MidocoApi\Order\StructType\MidocoCrmPerson) {
+            throw new InvalidArgumentException(sprintf('The MidocoCrmPerson property can only contain items of type \Pggns\MidocoApi\Order\StructType\MidocoCrmPerson, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
         }
         $this->MidocoCrmPerson[] = $item;
         
@@ -423,7 +423,7 @@ class MidocoCustomerData extends CustomerDTO
     }
     /**
      * Get MidocoCrmCompany value
-     * @return \Pggns\MidocoApi\Order\StructType\CrmCompanyDTO[]
+     * @return \Pggns\MidocoApi\Order\StructType\MidocoCrmCompany[]
      */
     public function getMidocoCrmCompany(): ?array
     {
@@ -445,12 +445,12 @@ class MidocoCustomerData extends CustomerDTO
         $invalidValues = [];
         foreach ($values as $midocoCustomerDataMidocoCrmCompanyItem) {
             // validation for constraint: itemType
-            if (!$midocoCustomerDataMidocoCrmCompanyItem instanceof \Pggns\MidocoApi\Order\StructType\CrmCompanyDTO) {
+            if (!$midocoCustomerDataMidocoCrmCompanyItem instanceof \Pggns\MidocoApi\Order\StructType\MidocoCrmCompany) {
                 $invalidValues[] = is_object($midocoCustomerDataMidocoCrmCompanyItem) ? get_class($midocoCustomerDataMidocoCrmCompanyItem) : sprintf('%s(%s)', gettype($midocoCustomerDataMidocoCrmCompanyItem), var_export($midocoCustomerDataMidocoCrmCompanyItem, true));
             }
         }
         if (!empty($invalidValues)) {
-            $message = sprintf('The MidocoCrmCompany property can only contain items of type \Pggns\MidocoApi\Order\StructType\CrmCompanyDTO, %s given', is_object($invalidValues) ? get_class($invalidValues) : (is_array($invalidValues) ? implode(', ', $invalidValues) : gettype($invalidValues)));
+            $message = sprintf('The MidocoCrmCompany property can only contain items of type \Pggns\MidocoApi\Order\StructType\MidocoCrmCompany, %s given', is_object($invalidValues) ? get_class($invalidValues) : (is_array($invalidValues) ? implode(', ', $invalidValues) : gettype($invalidValues)));
         }
         unset($invalidValues);
         
@@ -459,7 +459,7 @@ class MidocoCustomerData extends CustomerDTO
     /**
      * Set MidocoCrmCompany value
      * @throws InvalidArgumentException
-     * @param \Pggns\MidocoApi\Order\StructType\CrmCompanyDTO[] $midocoCrmCompany
+     * @param \Pggns\MidocoApi\Order\StructType\MidocoCrmCompany[] $midocoCrmCompany
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCustomerData
      */
     public function setMidocoCrmCompany(?array $midocoCrmCompany = null): self
@@ -475,14 +475,14 @@ class MidocoCustomerData extends CustomerDTO
     /**
      * Add item to MidocoCrmCompany value
      * @throws InvalidArgumentException
-     * @param \Pggns\MidocoApi\Order\StructType\CrmCompanyDTO $item
+     * @param \Pggns\MidocoApi\Order\StructType\MidocoCrmCompany $item
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCustomerData
      */
-    public function addToMidocoCrmCompany(\Pggns\MidocoApi\Order\StructType\CrmCompanyDTO $item): self
+    public function addToMidocoCrmCompany(\Pggns\MidocoApi\Order\StructType\MidocoCrmCompany $item): self
     {
         // validation for constraint: itemType
-        if (!$item instanceof \Pggns\MidocoApi\Order\StructType\CrmCompanyDTO) {
-            throw new InvalidArgumentException(sprintf('The MidocoCrmCompany property can only contain items of type \Pggns\MidocoApi\Order\StructType\CrmCompanyDTO, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
+        if (!$item instanceof \Pggns\MidocoApi\Order\StructType\MidocoCrmCompany) {
+            throw new InvalidArgumentException(sprintf('The MidocoCrmCompany property can only contain items of type \Pggns\MidocoApi\Order\StructType\MidocoCrmCompany, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
         }
         $this->MidocoCrmCompany[] = $item;
         

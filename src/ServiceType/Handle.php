@@ -54,9 +54,36 @@ class Handle extends AbstractSoapClientBase
         }
     }
     /**
+     * Method to call the operation originally named handleBookingDotComNotificationV3
+     * Meta information extracted from the WSDL
+     * - SOAPHeaderNames: MidocoCredentials
+     * - SOAPHeaderNamespaces: http://www.midoco.de/system
+     * - SOAPHeaderTypes: \Pggns\MidocoApi\Order\StructType\MidocoCredentialsType
+     * - SOAPHeaders: required
+     * @uses AbstractSoapClientBase::getSoapClient()
+     * @uses AbstractSoapClientBase::setResult()
+     * @uses AbstractSoapClientBase::saveLastError()
+     * @param \Pggns\MidocoApi\Order\StructType\HandleBookingDotComNotificationV3Request $paramHandleBookingDotComNotificationV3Request
+     * @return \Pggns\MidocoApi\Order\StructType\HandleBookingDotComNotificationV3Response|bool
+     */
+    public function handleBookingDotComNotificationV3(\Pggns\MidocoApi\Order\StructType\HandleBookingDotComNotificationV3Request $paramHandleBookingDotComNotificationV3Request)
+    {
+        try {
+            $this->setResult($resultHandleBookingDotComNotificationV3 = $this->getSoapClient()->__soapCall('handleBookingDotComNotificationV3', [
+                $paramHandleBookingDotComNotificationV3Request,
+            ], [], [], $this->outputHeaders));
+        
+            return $resultHandleBookingDotComNotificationV3;
+        } catch (SoapFault $soapFault) {
+            $this->saveLastError(__METHOD__, $soapFault);
+        
+            return false;
+        }
+    }
+    /**
      * Returns the result
      * @see AbstractSoapClientBase::getResult()
-     * @return \Pggns\MidocoApi\Order\StructType\HandleBookingDotComNotificationResponse
+     * @return \Pggns\MidocoApi\Order\StructType\HandleBookingDotComNotificationResponse|\Pggns\MidocoApi\Order\StructType\HandleBookingDotComNotificationV3Response
      */
     public function getResult()
     {

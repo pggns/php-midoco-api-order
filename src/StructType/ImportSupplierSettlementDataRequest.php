@@ -79,6 +79,13 @@ class ImportSupplierSettlementDataRequest extends AbstractStructBase
      */
     protected ?string $supplierId = null;
     /**
+     * The adoptSupplierAsSettlementParty
+     * Meta information extracted from the WSDL
+     * - documentation: We are using the supplierId as settlementParty during import. SupplierId needs to be non empty.
+     * @var bool|null
+     */
+    protected ?bool $adoptSupplierAsSettlementParty = null;
+    /**
      * Constructor method for ImportSupplierSettlementDataRequest
      * @uses ImportSupplierSettlementDataRequest::setData()
      * @uses ImportSupplierSettlementDataRequest::setBytes()
@@ -92,6 +99,7 @@ class ImportSupplierSettlementDataRequest extends AbstractStructBase
      * @uses ImportSupplierSettlementDataRequest::setSettlementDate()
      * @uses ImportSupplierSettlementDataRequest::setSettlementType()
      * @uses ImportSupplierSettlementDataRequest::setSupplierId()
+     * @uses ImportSupplierSettlementDataRequest::setAdoptSupplierAsSettlementParty()
      * @param string $data
      * @param string $bytes
      * @param string $sourceSystem
@@ -104,8 +112,9 @@ class ImportSupplierSettlementDataRequest extends AbstractStructBase
      * @param string $settlementDate
      * @param string $settlementType
      * @param string $supplierId
+     * @param bool $adoptSupplierAsSettlementParty
      */
-    public function __construct(?string $data = null, ?string $bytes = null, ?string $sourceSystem = null, ?bool $invokeCheckProcess = null, ?string $delimiter = null, ?string $dateFormat = null, ?string $decimalDelimiter = null, ?string $supplierDataFormat = null, ?bool $textInQuotes = null, ?string $settlementDate = null, ?string $settlementType = null, ?string $supplierId = null)
+    public function __construct(?string $data = null, ?string $bytes = null, ?string $sourceSystem = null, ?bool $invokeCheckProcess = null, ?string $delimiter = null, ?string $dateFormat = null, ?string $decimalDelimiter = null, ?string $supplierDataFormat = null, ?bool $textInQuotes = null, ?string $settlementDate = null, ?string $settlementType = null, ?string $supplierId = null, ?bool $adoptSupplierAsSettlementParty = null)
     {
         $this
             ->setData($data)
@@ -119,7 +128,8 @@ class ImportSupplierSettlementDataRequest extends AbstractStructBase
             ->setTextInQuotes($textInQuotes)
             ->setSettlementDate($settlementDate)
             ->setSettlementType($settlementType)
-            ->setSupplierId($supplierId);
+            ->setSupplierId($supplierId)
+            ->setAdoptSupplierAsSettlementParty($adoptSupplierAsSettlementParty);
     }
     /**
      * Get Data value
@@ -394,6 +404,29 @@ class ImportSupplierSettlementDataRequest extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($supplierId, true), gettype($supplierId)), __LINE__);
         }
         $this->supplierId = $supplierId;
+        
+        return $this;
+    }
+    /**
+     * Get adoptSupplierAsSettlementParty value
+     * @return bool|null
+     */
+    public function getAdoptSupplierAsSettlementParty(): ?bool
+    {
+        return $this->adoptSupplierAsSettlementParty;
+    }
+    /**
+     * Set adoptSupplierAsSettlementParty value
+     * @param bool $adoptSupplierAsSettlementParty
+     * @return \Pggns\MidocoApi\Order\StructType\ImportSupplierSettlementDataRequest
+     */
+    public function setAdoptSupplierAsSettlementParty(?bool $adoptSupplierAsSettlementParty = null): self
+    {
+        // validation for constraint: boolean
+        if (!is_null($adoptSupplierAsSettlementParty) && !is_bool($adoptSupplierAsSettlementParty)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($adoptSupplierAsSettlementParty, true), gettype($adoptSupplierAsSettlementParty)), __LINE__);
+        }
+        $this->adoptSupplierAsSettlementParty = $adoptSupplierAsSettlementParty;
         
         return $this;
     }

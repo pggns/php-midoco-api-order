@@ -48,26 +48,34 @@ class PrintBillingPrintjobRequest extends AbstractStructBase
      */
     protected ?bool $hasPayByLink = null;
     /**
+     * The printingUserId
+     * @var int|null
+     */
+    protected ?int $printingUserId = null;
+    /**
      * Constructor method for PrintBillingPrintjobRequest
      * @uses PrintBillingPrintjobRequest::setCreateBillingPrintjobRequest()
      * @uses PrintBillingPrintjobRequest::setPreview()
      * @uses PrintBillingPrintjobRequest::setInvokeFinishDocument()
      * @uses PrintBillingPrintjobRequest::setReceiptDate()
      * @uses PrintBillingPrintjobRequest::setHasPayByLink()
+     * @uses PrintBillingPrintjobRequest::setPrintingUserId()
      * @param \Pggns\MidocoApi\Order\StructType\CreateBillingPrintjobRequest $createBillingPrintjobRequest
      * @param bool $preview
      * @param bool $invokeFinishDocument
      * @param string $receiptDate
      * @param bool $hasPayByLink
+     * @param int $printingUserId
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\CreateBillingPrintjobRequest $createBillingPrintjobRequest = null, ?bool $preview = false, ?bool $invokeFinishDocument = false, ?string $receiptDate = null, ?bool $hasPayByLink = false)
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\CreateBillingPrintjobRequest $createBillingPrintjobRequest = null, ?bool $preview = false, ?bool $invokeFinishDocument = false, ?string $receiptDate = null, ?bool $hasPayByLink = false, ?int $printingUserId = null)
     {
         $this
             ->setCreateBillingPrintjobRequest($createBillingPrintjobRequest)
             ->setPreview($preview)
             ->setInvokeFinishDocument($invokeFinishDocument)
             ->setReceiptDate($receiptDate)
-            ->setHasPayByLink($hasPayByLink);
+            ->setHasPayByLink($hasPayByLink)
+            ->setPrintingUserId($printingUserId);
     }
     /**
      * Get CreateBillingPrintjobRequest value
@@ -177,6 +185,29 @@ class PrintBillingPrintjobRequest extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($hasPayByLink, true), gettype($hasPayByLink)), __LINE__);
         }
         $this->hasPayByLink = $hasPayByLink;
+        
+        return $this;
+    }
+    /**
+     * Get printingUserId value
+     * @return int|null
+     */
+    public function getPrintingUserId(): ?int
+    {
+        return $this->printingUserId;
+    }
+    /**
+     * Set printingUserId value
+     * @param int $printingUserId
+     * @return \Pggns\MidocoApi\Order\StructType\PrintBillingPrintjobRequest
+     */
+    public function setPrintingUserId(?int $printingUserId = null): self
+    {
+        // validation for constraint: int
+        if (!is_null($printingUserId) && !(is_int($printingUserId) || ctype_digit($printingUserId))) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($printingUserId, true), gettype($printingUserId)), __LINE__);
+        }
+        $this->printingUserId = $printingUserId;
         
         return $this;
     }

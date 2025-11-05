@@ -211,6 +211,13 @@ class BusServiceType extends AbstractStructBase
      */
     protected ?string $returnPlatform = null;
     /**
+     * The co2Emission
+     * Meta information extracted from the WSDL
+     * - minOccurs: 0
+     * @var float|null
+     */
+    protected ?float $co2Emission = null;
+    /**
      * The transfer
      * @var string|null
      */
@@ -286,6 +293,7 @@ class BusServiceType extends AbstractStructBase
      * @uses BusServiceType::setReturnToCityDesc()
      * @uses BusServiceType::setReturnSeat()
      * @uses BusServiceType::setReturnPlatform()
+     * @uses BusServiceType::setCo2Emission()
      * @uses BusServiceType::setTransfer()
      * @uses BusServiceType::setServiceStatus()
      * @uses BusServiceType::setPersonAssignment()
@@ -320,6 +328,7 @@ class BusServiceType extends AbstractStructBase
      * @param string $returnToCityDesc
      * @param string $returnSeat
      * @param string $returnPlatform
+     * @param float $co2Emission
      * @param string $transfer
      * @param string $serviceStatus
      * @param string $personAssignment
@@ -329,7 +338,7 @@ class BusServiceType extends AbstractStructBase
      * @param int $paxPerService
      * @param int $noOfNights
      */
-    public function __construct(int $position, ?string $serviceCode = null, ?string $serviceName = null, ?string $serviceDescription = null, ?string $accomodationCode = null, ?string $accomodationDesc = null, ?string $outwardFromDate = null, ?string $outwardFromTime = null, ?string $outwardFromCityCode = null, ?string $outwardFromCityDesc = null, ?string $outwardToDate = null, ?string $outwardToTime = null, ?string $outwardToCityCode = null, ?string $outwardToCityDesc = null, ?string $outwardSeat = null, ?string $outwardPlatform = null, ?string $returnFromDate = null, ?string $returnFromTime = null, ?string $returnFromCityCode = null, ?string $returnFromCityDesc = null, ?string $returnToDate = null, ?string $returnToTime = null, ?string $returnToCityCode = null, ?string $returnToCityDesc = null, ?string $returnSeat = null, ?string $returnPlatform = null, ?string $transfer = null, ?string $serviceStatus = null, ?string $personAssignment = null, ?float $servicePrice = null, ?string $currency = 'EUR', ?bool $vatIncluded = false, ?int $paxPerService = null, ?int $noOfNights = null)
+    public function __construct(int $position, ?string $serviceCode = null, ?string $serviceName = null, ?string $serviceDescription = null, ?string $accomodationCode = null, ?string $accomodationDesc = null, ?string $outwardFromDate = null, ?string $outwardFromTime = null, ?string $outwardFromCityCode = null, ?string $outwardFromCityDesc = null, ?string $outwardToDate = null, ?string $outwardToTime = null, ?string $outwardToCityCode = null, ?string $outwardToCityDesc = null, ?string $outwardSeat = null, ?string $outwardPlatform = null, ?string $returnFromDate = null, ?string $returnFromTime = null, ?string $returnFromCityCode = null, ?string $returnFromCityDesc = null, ?string $returnToDate = null, ?string $returnToTime = null, ?string $returnToCityCode = null, ?string $returnToCityDesc = null, ?string $returnSeat = null, ?string $returnPlatform = null, ?float $co2Emission = null, ?string $transfer = null, ?string $serviceStatus = null, ?string $personAssignment = null, ?float $servicePrice = null, ?string $currency = 'EUR', ?bool $vatIncluded = false, ?int $paxPerService = null, ?int $noOfNights = null)
     {
         $this
             ->setPosition($position)
@@ -358,6 +367,7 @@ class BusServiceType extends AbstractStructBase
             ->setReturnToCityDesc($returnToCityDesc)
             ->setReturnSeat($returnSeat)
             ->setReturnPlatform($returnPlatform)
+            ->setCo2Emission($co2Emission)
             ->setTransfer($transfer)
             ->setServiceStatus($serviceStatus)
             ->setPersonAssignment($personAssignment)
@@ -1026,6 +1036,29 @@ class BusServiceType extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($returnPlatform, true), gettype($returnPlatform)), __LINE__);
         }
         $this->returnPlatform = $returnPlatform;
+        
+        return $this;
+    }
+    /**
+     * Get co2Emission value
+     * @return float|null
+     */
+    public function getCo2Emission(): ?float
+    {
+        return $this->co2Emission;
+    }
+    /**
+     * Set co2Emission value
+     * @param float $co2Emission
+     * @return \Pggns\MidocoApi\Order\StructType\BusServiceType
+     */
+    public function setCo2Emission(?float $co2Emission = null): self
+    {
+        // validation for constraint: float
+        if (!is_null($co2Emission) && !(is_float($co2Emission) || is_numeric($co2Emission))) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a float value, %s given', var_export($co2Emission, true), gettype($co2Emission)), __LINE__);
+        }
+        $this->co2Emission = $co2Emission;
         
         return $this;
     }

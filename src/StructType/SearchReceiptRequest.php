@@ -72,6 +72,14 @@ class SearchReceiptRequest extends AbstractStructBase
      */
     protected ?bool $ignoreCashBookId = null;
     /**
+     * The extendedInfo
+     * Meta information extracted from the WSDL
+     * - default: false
+     * - use: optional
+     * @var bool|null
+     */
+    protected ?bool $extendedInfo = null;
+    /**
      * Constructor method for SearchReceiptRequest
      * @uses SearchReceiptRequest::setCashBookId()
      * @uses SearchReceiptRequest::setReceiptNo()
@@ -84,6 +92,7 @@ class SearchReceiptRequest extends AbstractStructBase
      * @uses SearchReceiptRequest::setManuallyAdjustable()
      * @uses SearchReceiptRequest::setReceiptCounter()
      * @uses SearchReceiptRequest::setIgnoreCashBookId()
+     * @uses SearchReceiptRequest::setExtendedInfo()
      * @param int $cashBookId
      * @param int $receiptNo
      * @param string $receiptDateFrom
@@ -95,8 +104,9 @@ class SearchReceiptRequest extends AbstractStructBase
      * @param bool $manuallyAdjustable
      * @param int $receiptCounter
      * @param bool $ignoreCashBookId
+     * @param bool $extendedInfo
      */
-    public function __construct(int $cashBookId, ?int $receiptNo = null, ?string $receiptDateFrom = null, ?string $receiptDateUntil = null, ?int $creator = null, ?int $customerId = null, ?string $customerName = null, ?int $orderNo = null, ?bool $manuallyAdjustable = null, ?int $receiptCounter = null, ?bool $ignoreCashBookId = null)
+    public function __construct(int $cashBookId, ?int $receiptNo = null, ?string $receiptDateFrom = null, ?string $receiptDateUntil = null, ?int $creator = null, ?int $customerId = null, ?string $customerName = null, ?int $orderNo = null, ?bool $manuallyAdjustable = null, ?int $receiptCounter = null, ?bool $ignoreCashBookId = null, ?bool $extendedInfo = false)
     {
         $this
             ->setCashBookId($cashBookId)
@@ -109,7 +119,8 @@ class SearchReceiptRequest extends AbstractStructBase
             ->setOrderNo($orderNo)
             ->setManuallyAdjustable($manuallyAdjustable)
             ->setReceiptCounter($receiptCounter)
-            ->setIgnoreCashBookId($ignoreCashBookId);
+            ->setIgnoreCashBookId($ignoreCashBookId)
+            ->setExtendedInfo($extendedInfo);
     }
     /**
      * Get cashBookId value
@@ -361,6 +372,29 @@ class SearchReceiptRequest extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($ignoreCashBookId, true), gettype($ignoreCashBookId)), __LINE__);
         }
         $this->ignoreCashBookId = $ignoreCashBookId;
+        
+        return $this;
+    }
+    /**
+     * Get extendedInfo value
+     * @return bool|null
+     */
+    public function getExtendedInfo(): ?bool
+    {
+        return $this->extendedInfo;
+    }
+    /**
+     * Set extendedInfo value
+     * @param bool $extendedInfo
+     * @return \Pggns\MidocoApi\Order\StructType\SearchReceiptRequest
+     */
+    public function setExtendedInfo(?bool $extendedInfo = false): self
+    {
+        // validation for constraint: boolean
+        if (!is_null($extendedInfo) && !is_bool($extendedInfo)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($extendedInfo, true), gettype($extendedInfo)), __LINE__);
+        }
+        $this->extendedInfo = $extendedInfo;
         
         return $this;
     }

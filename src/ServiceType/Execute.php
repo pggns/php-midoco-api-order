@@ -243,6 +243,33 @@ class Execute extends AbstractSoapClientBase
         }
     }
     /**
+     * Method to call the operation originally named executeDunning
+     * Meta information extracted from the WSDL
+     * - SOAPHeaderNames: MidocoCredentials
+     * - SOAPHeaderNamespaces: http://www.midoco.de/system
+     * - SOAPHeaderTypes: \Pggns\MidocoApi\Order\StructType\MidocoCredentialsType
+     * - SOAPHeaders: required
+     * @uses AbstractSoapClientBase::getSoapClient()
+     * @uses AbstractSoapClientBase::setResult()
+     * @uses AbstractSoapClientBase::saveLastError()
+     * @param \Pggns\MidocoApi\Order\StructType\ExecuteDunningRequest $paramExecuteDunningRequest
+     * @return \Pggns\MidocoApi\Order\StructType\ExecuteDunningResponse|bool
+     */
+    public function executeDunning(\Pggns\MidocoApi\Order\StructType\ExecuteDunningRequest $paramExecuteDunningRequest)
+    {
+        try {
+            $this->setResult($resultExecuteDunning = $this->getSoapClient()->__soapCall('executeDunning', [
+                $paramExecuteDunningRequest,
+            ], [], [], $this->outputHeaders));
+        
+            return $resultExecuteDunning;
+        } catch (SoapFault $soapFault) {
+            $this->saveLastError(__METHOD__, $soapFault);
+        
+            return false;
+        }
+    }
+    /**
      * Method to call the operation originally named executeMediatorProductSettlement
      * Meta information extracted from the WSDL
      * - SOAPHeaderNames: MidocoCredentials
@@ -461,7 +488,7 @@ class Execute extends AbstractSoapClientBase
     /**
      * Returns the result
      * @see AbstractSoapClientBase::getResult()
-     * @return \Pggns\MidocoApi\Order\StructType\ExecuteAgencySettlementLevelResponse|\Pggns\MidocoApi\Order\StructType\ExecuteAgencySettlementResponse|\Pggns\MidocoApi\Order\StructType\ExecuteBackofficeExportRequest|\Pggns\MidocoApi\Order\StructType\ExecuteBillingDunningResponse|\Pggns\MidocoApi\Order\StructType\ExecuteBonusRuleResponse|\Pggns\MidocoApi\Order\StructType\ExecuteCompetitionRuleResponse|\Pggns\MidocoApi\Order\StructType\ExecuteGroupAdvisorSettlementResponse|\Pggns\MidocoApi\Order\StructType\ExecuteMediatorProductSettlementResponse|\Pggns\MidocoApi\Order\StructType\ExecuteMediatorSettlementLevelResponse|\Pggns\MidocoApi\Order\StructType\ExecuteMediatorSettlementResponse|\Pggns\MidocoApi\Order\StructType\ExecuteOrderRulesResponse|\Pggns\MidocoApi\Order\StructType\ExecuteRevertAuthResponse|\Pggns\MidocoApi\Order\StructType\ExecuteSettlementChargeForCompanyResponse|\Pggns\MidocoApi\Order\StructType\ExecuteSettlementChargeResponse|\Pggns\MidocoApi\Order\StructType\ExecuteSingleMarginBookingResponse|\Pggns\MidocoApi\Order\StructType\ExecuteTravelNoMarginBookingResponse
+     * @return \Pggns\MidocoApi\Order\StructType\ExecuteAgencySettlementLevelResponse|\Pggns\MidocoApi\Order\StructType\ExecuteAgencySettlementResponse|\Pggns\MidocoApi\Order\StructType\ExecuteBackofficeExportRequest|\Pggns\MidocoApi\Order\StructType\ExecuteBillingDunningResponse|\Pggns\MidocoApi\Order\StructType\ExecuteBonusRuleResponse|\Pggns\MidocoApi\Order\StructType\ExecuteCompetitionRuleResponse|\Pggns\MidocoApi\Order\StructType\ExecuteDunningResponse|\Pggns\MidocoApi\Order\StructType\ExecuteGroupAdvisorSettlementResponse|\Pggns\MidocoApi\Order\StructType\ExecuteMediatorProductSettlementResponse|\Pggns\MidocoApi\Order\StructType\ExecuteMediatorSettlementLevelResponse|\Pggns\MidocoApi\Order\StructType\ExecuteMediatorSettlementResponse|\Pggns\MidocoApi\Order\StructType\ExecuteOrderRulesResponse|\Pggns\MidocoApi\Order\StructType\ExecuteRevertAuthResponse|\Pggns\MidocoApi\Order\StructType\ExecuteSettlementChargeForCompanyResponse|\Pggns\MidocoApi\Order\StructType\ExecuteSettlementChargeResponse|\Pggns\MidocoApi\Order\StructType\ExecuteSingleMarginBookingResponse|\Pggns\MidocoApi\Order\StructType\ExecuteTravelNoMarginBookingResponse
      */
     public function getResult()
     {

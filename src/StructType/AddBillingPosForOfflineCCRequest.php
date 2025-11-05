@@ -43,6 +43,16 @@ class AddBillingPosForOfflineCCRequest extends AbstractStructBase
      */
     protected ?float $amount = null;
     /**
+     * The currency
+     * @var string|null
+     */
+    protected ?string $currency = null;
+    /**
+     * The currencyRate
+     * @var float|null
+     */
+    protected ?float $currencyRate = null;
+    /**
      * The terminalId
      * @var string|null
      */
@@ -59,6 +69,8 @@ class AddBillingPosForOfflineCCRequest extends AbstractStructBase
      * @uses AddBillingPosForOfflineCCRequest::setCcReceiptNo()
      * @uses AddBillingPosForOfflineCCRequest::setCcType()
      * @uses AddBillingPosForOfflineCCRequest::setAmount()
+     * @uses AddBillingPosForOfflineCCRequest::setCurrency()
+     * @uses AddBillingPosForOfflineCCRequest::setCurrencyRate()
      * @uses AddBillingPosForOfflineCCRequest::setTerminalId()
      * @uses AddBillingPosForOfflineCCRequest::setTraceNumber()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBillingDocument $midocoBillingDocument
@@ -66,10 +78,12 @@ class AddBillingPosForOfflineCCRequest extends AbstractStructBase
      * @param int $ccReceiptNo
      * @param string $ccType
      * @param float $amount
+     * @param string $currency
+     * @param float $currencyRate
      * @param string $terminalId
      * @param string $traceNumber
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoBillingDocument $midocoBillingDocument = null, ?string $ccNo = null, ?int $ccReceiptNo = null, ?string $ccType = null, ?float $amount = null, ?string $terminalId = null, ?string $traceNumber = null)
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoBillingDocument $midocoBillingDocument = null, ?string $ccNo = null, ?int $ccReceiptNo = null, ?string $ccType = null, ?float $amount = null, ?string $currency = null, ?float $currencyRate = null, ?string $terminalId = null, ?string $traceNumber = null)
     {
         $this
             ->setMidocoBillingDocument($midocoBillingDocument)
@@ -77,6 +91,8 @@ class AddBillingPosForOfflineCCRequest extends AbstractStructBase
             ->setCcReceiptNo($ccReceiptNo)
             ->setCcType($ccType)
             ->setAmount($amount)
+            ->setCurrency($currency)
+            ->setCurrencyRate($currencyRate)
             ->setTerminalId($terminalId)
             ->setTraceNumber($traceNumber);
     }
@@ -188,6 +204,52 @@ class AddBillingPosForOfflineCCRequest extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a float value, %s given', var_export($amount, true), gettype($amount)), __LINE__);
         }
         $this->amount = $amount;
+        
+        return $this;
+    }
+    /**
+     * Get currency value
+     * @return string|null
+     */
+    public function getCurrency(): ?string
+    {
+        return $this->currency;
+    }
+    /**
+     * Set currency value
+     * @param string $currency
+     * @return \Pggns\MidocoApi\Order\StructType\AddBillingPosForOfflineCCRequest
+     */
+    public function setCurrency(?string $currency = null): self
+    {
+        // validation for constraint: string
+        if (!is_null($currency) && !is_string($currency)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($currency, true), gettype($currency)), __LINE__);
+        }
+        $this->currency = $currency;
+        
+        return $this;
+    }
+    /**
+     * Get currencyRate value
+     * @return float|null
+     */
+    public function getCurrencyRate(): ?float
+    {
+        return $this->currencyRate;
+    }
+    /**
+     * Set currencyRate value
+     * @param float $currencyRate
+     * @return \Pggns\MidocoApi\Order\StructType\AddBillingPosForOfflineCCRequest
+     */
+    public function setCurrencyRate(?float $currencyRate = null): self
+    {
+        // validation for constraint: float
+        if (!is_null($currencyRate) && !(is_float($currencyRate) || is_numeric($currencyRate))) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a float value, %s given', var_export($currencyRate, true), gettype($currencyRate)), __LINE__);
+        }
+        $this->currencyRate = $currencyRate;
         
         return $this;
     }

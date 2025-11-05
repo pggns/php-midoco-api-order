@@ -18,9 +18,9 @@ class MidocoGdsProfile extends CustomerProfileDTO
      * The MidocoCrmCustomer
      * Meta information extracted from the WSDL
      * - ref: MidocoCrmCustomer
-     * @var \Pggns\MidocoApi\Order\StructType\CrmCustomerDTO|null
+     * @var \Pggns\MidocoApi\Order\StructType\MidocoCrmCustomer|null
      */
-    protected ?\Pggns\MidocoApi\Order\StructType\CrmCustomerDTO $MidocoCrmCustomer = null;
+    protected ?\Pggns\MidocoApi\Order\StructType\MidocoCrmCustomer $MidocoCrmCustomer = null;
     /**
      * The MidocoCustomerProfileAttribute
      * Meta information extracted from the WSDL
@@ -74,14 +74,14 @@ class MidocoGdsProfile extends CustomerProfileDTO
      * @uses MidocoGdsProfile::setMidocoFrequentFlyerNumber()
      * @uses MidocoGdsProfile::setMidocoCrmAddress()
      * @uses MidocoGdsProfile::setMidocoContactEntry()
-     * @param \Pggns\MidocoApi\Order\StructType\CrmCustomerDTO $midocoCrmCustomer
+     * @param \Pggns\MidocoApi\Order\StructType\MidocoCrmCustomer $midocoCrmCustomer
      * @param \Pggns\MidocoApi\Order\StructType\CustProfileAttrDTO[] $midocoCustomerProfileAttribute
      * @param \Pggns\MidocoApi\Order\StructType\CrmCustomerLinkDTO[] $midocoCrmCustomerLink
      * @param \Pggns\MidocoApi\Order\StructType\FrequentFlyerNumberDTO[] $midocoFrequentFlyerNumber
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCrmAddress[] $midocoCrmAddress
      * @param \Pggns\MidocoApi\Order\StructType\MidocoContactEntryType[] $midocoContactEntry
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\CrmCustomerDTO $midocoCrmCustomer = null, ?array $midocoCustomerProfileAttribute = null, ?array $midocoCrmCustomerLink = null, ?array $midocoFrequentFlyerNumber = null, ?array $midocoCrmAddress = null, ?array $midocoContactEntry = null)
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoCrmCustomer $midocoCrmCustomer = null, ?array $midocoCustomerProfileAttribute = null, ?array $midocoCrmCustomerLink = null, ?array $midocoFrequentFlyerNumber = null, ?array $midocoCrmAddress = null, ?array $midocoContactEntry = null)
     {
         $this
             ->setMidocoCrmCustomer($midocoCrmCustomer)
@@ -93,18 +93,18 @@ class MidocoGdsProfile extends CustomerProfileDTO
     }
     /**
      * Get MidocoCrmCustomer value
-     * @return \Pggns\MidocoApi\Order\StructType\CrmCustomerDTO|null
+     * @return \Pggns\MidocoApi\Order\StructType\MidocoCrmCustomer|null
      */
-    public function getMidocoCrmCustomer(): ?\Pggns\MidocoApi\Order\StructType\CrmCustomerDTO
+    public function getMidocoCrmCustomer(): ?\Pggns\MidocoApi\Order\StructType\MidocoCrmCustomer
     {
         return $this->MidocoCrmCustomer;
     }
     /**
      * Set MidocoCrmCustomer value
-     * @param \Pggns\MidocoApi\Order\StructType\CrmCustomerDTO $midocoCrmCustomer
+     * @param \Pggns\MidocoApi\Order\StructType\MidocoCrmCustomer $midocoCrmCustomer
      * @return \Pggns\MidocoApi\Order\StructType\MidocoGdsProfile
      */
-    public function setMidocoCrmCustomer(?\Pggns\MidocoApi\Order\StructType\CrmCustomerDTO $midocoCrmCustomer = null): self
+    public function setMidocoCrmCustomer(?\Pggns\MidocoApi\Order\StructType\MidocoCrmCustomer $midocoCrmCustomer = null): self
     {
         $this->MidocoCrmCustomer = $midocoCrmCustomer;
         

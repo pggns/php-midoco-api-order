@@ -147,6 +147,13 @@ class GenericServiceType extends AbstractStructBase
      */
     protected ?string $locationDescription = null;
     /**
+     * The co2Emission
+     * Meta information extracted from the WSDL
+     * - minOccurs: 0
+     * @var float|null
+     */
+    protected ?float $co2Emission = null;
+    /**
      * The departureTime
      * Meta information extracted from the WSDL
      * - base: xs:string
@@ -190,6 +197,7 @@ class GenericServiceType extends AbstractStructBase
      * @uses GenericServiceType::setServiceCurrency()
      * @uses GenericServiceType::setServiceDescription()
      * @uses GenericServiceType::setLocationDescription()
+     * @uses GenericServiceType::setCo2Emission()
      * @uses GenericServiceType::setDepartureTime()
      * @uses GenericServiceType::setArrivalTime()
      * @uses GenericServiceType::setSimpleService()
@@ -210,11 +218,12 @@ class GenericServiceType extends AbstractStructBase
      * @param string $serviceCurrency
      * @param string $serviceDescription
      * @param string $locationDescription
+     * @param float $co2Emission
      * @param string $departureTime
      * @param string $arrivalTime
      * @param bool $simpleService
      */
-    public function __construct(int $position, ?string $serviceCode = null, ?string $serviceName = null, ?string $accomodation = null, ?string $accomodationDescription = null, ?string $catering = null, ?string $cateringDescription = null, ?string $personsPerService = null, ?string $noOfServices = null, ?string $startDate = null, ?string $endDate = null, ?string $personAssignment = null, ?string $serviceStatus = null, ?float $servicePrice = null, ?string $serviceCurrency = 'EUR', ?string $serviceDescription = null, ?string $locationDescription = null, ?string $departureTime = null, ?string $arrivalTime = null, ?bool $simpleService = false)
+    public function __construct(int $position, ?string $serviceCode = null, ?string $serviceName = null, ?string $accomodation = null, ?string $accomodationDescription = null, ?string $catering = null, ?string $cateringDescription = null, ?string $personsPerService = null, ?string $noOfServices = null, ?string $startDate = null, ?string $endDate = null, ?string $personAssignment = null, ?string $serviceStatus = null, ?float $servicePrice = null, ?string $serviceCurrency = 'EUR', ?string $serviceDescription = null, ?string $locationDescription = null, ?float $co2Emission = null, ?string $departureTime = null, ?string $arrivalTime = null, ?bool $simpleService = false)
     {
         $this
             ->setPosition($position)
@@ -234,6 +243,7 @@ class GenericServiceType extends AbstractStructBase
             ->setServiceCurrency($serviceCurrency)
             ->setServiceDescription($serviceDescription)
             ->setLocationDescription($locationDescription)
+            ->setCo2Emission($co2Emission)
             ->setDepartureTime($departureTime)
             ->setArrivalTime($arrivalTime)
             ->setSimpleService($simpleService);
@@ -634,6 +644,29 @@ class GenericServiceType extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($locationDescription, true), gettype($locationDescription)), __LINE__);
         }
         $this->locationDescription = $locationDescription;
+        
+        return $this;
+    }
+    /**
+     * Get co2Emission value
+     * @return float|null
+     */
+    public function getCo2Emission(): ?float
+    {
+        return $this->co2Emission;
+    }
+    /**
+     * Set co2Emission value
+     * @param float $co2Emission
+     * @return \Pggns\MidocoApi\Order\StructType\GenericServiceType
+     */
+    public function setCo2Emission(?float $co2Emission = null): self
+    {
+        // validation for constraint: float
+        if (!is_null($co2Emission) && !(is_float($co2Emission) || is_numeric($co2Emission))) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a float value, %s given', var_export($co2Emission, true), gettype($co2Emission)), __LINE__);
+        }
+        $this->co2Emission = $co2Emission;
         
         return $this;
     }

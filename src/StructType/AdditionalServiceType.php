@@ -40,10 +40,24 @@ class AdditionalServiceType extends AbstractStructBase
      */
     protected ?int $booking_position = null;
     /**
+     * The included_in_total
+     * Meta information extracted from the WSDL
+     * - default: true
+     * @var bool|null
+     */
+    protected ?bool $included_in_total = null;
+    /**
      * The bookingPosition
      * @var int|null
      */
     protected ?int $bookingPosition = null;
+    /**
+     * The includedInTotal
+     * Meta information extracted from the WSDL
+     * - default: true
+     * @var bool|null
+     */
+    protected ?bool $includedInTotal = null;
     /**
      * Constructor method for AdditionalServiceType
      * @uses AdditionalServiceType::setCode()
@@ -51,15 +65,19 @@ class AdditionalServiceType extends AbstractStructBase
      * @uses AdditionalServiceType::setPrice()
      * @uses AdditionalServiceType::setCurrency()
      * @uses AdditionalServiceType::setBooking_position()
+     * @uses AdditionalServiceType::setIncluded_in_total()
      * @uses AdditionalServiceType::setBookingPosition()
+     * @uses AdditionalServiceType::setIncludedInTotal()
      * @param string $code
      * @param string $description
      * @param float $price
      * @param string $currency
      * @param int $booking_position
+     * @param bool $included_in_total
      * @param int $bookingPosition
+     * @param bool $includedInTotal
      */
-    public function __construct(?string $code = null, ?string $description = null, ?float $price = null, ?string $currency = null, ?int $booking_position = null, ?int $bookingPosition = null)
+    public function __construct(?string $code = null, ?string $description = null, ?float $price = null, ?string $currency = null, ?int $booking_position = null, ?bool $included_in_total = true, ?int $bookingPosition = null, ?bool $includedInTotal = true)
     {
         $this
             ->setCode($code)
@@ -67,7 +85,9 @@ class AdditionalServiceType extends AbstractStructBase
             ->setPrice($price)
             ->setCurrency($currency)
             ->setBooking_position($booking_position)
-            ->setBookingPosition($bookingPosition);
+            ->setIncluded_in_total($included_in_total)
+            ->setBookingPosition($bookingPosition)
+            ->setIncludedInTotal($includedInTotal);
     }
     /**
      * Get code value
@@ -185,6 +205,29 @@ class AdditionalServiceType extends AbstractStructBase
         return $this;
     }
     /**
+     * Get included_in_total value
+     * @return bool|null
+     */
+    public function getIncluded_in_total(): ?bool
+    {
+        return $this->{'included-in-total'};
+    }
+    /**
+     * Set included_in_total value
+     * @param bool $included_in_total
+     * @return \Pggns\MidocoApi\Order\StructType\AdditionalServiceType
+     */
+    public function setIncluded_in_total(?bool $included_in_total = true): self
+    {
+        // validation for constraint: boolean
+        if (!is_null($included_in_total) && !is_bool($included_in_total)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($included_in_total, true), gettype($included_in_total)), __LINE__);
+        }
+        $this->included_in_total = $this->{'included-in-total'} = $included_in_total;
+        
+        return $this;
+    }
+    /**
      * Get bookingPosition value
      * @return int|null
      */
@@ -204,6 +247,29 @@ class AdditionalServiceType extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($bookingPosition, true), gettype($bookingPosition)), __LINE__);
         }
         $this->bookingPosition = $bookingPosition;
+        
+        return $this;
+    }
+    /**
+     * Get includedInTotal value
+     * @return bool|null
+     */
+    public function getIncludedInTotal(): ?bool
+    {
+        return $this->includedInTotal;
+    }
+    /**
+     * Set includedInTotal value
+     * @param bool $includedInTotal
+     * @return \Pggns\MidocoApi\Order\StructType\AdditionalServiceType
+     */
+    public function setIncludedInTotal(?bool $includedInTotal = true): self
+    {
+        // validation for constraint: boolean
+        if (!is_null($includedInTotal) && !is_bool($includedInTotal)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($includedInTotal, true), gettype($includedInTotal)), __LINE__);
+        }
+        $this->includedInTotal = $includedInTotal;
         
         return $this;
     }

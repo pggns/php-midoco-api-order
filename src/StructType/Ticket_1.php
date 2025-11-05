@@ -198,6 +198,11 @@ class Ticket_1 extends AbstractStructBase
      */
     protected ?string $emdSubGroup = null;
     /**
+     * The destinationCode
+     * @var string|null
+     */
+    protected ?string $destinationCode = null;
+    /**
      * Constructor method for Ticket
      * @uses Ticket_1::setBookingPositionRefId()
      * @uses Ticket_1::setTravelerRefId()
@@ -228,6 +233,7 @@ class Ticket_1 extends AbstractStructBase
      * @uses Ticket_1::setIsInkasso()
      * @uses Ticket_1::setExtPaymentType()
      * @uses Ticket_1::setEmdSubGroup()
+     * @uses Ticket_1::setDestinationCode()
      * @param int $bookingPositionRefId
      * @param int $travelerRefId
      * @param int $ticketPriceRefId
@@ -257,8 +263,9 @@ class Ticket_1 extends AbstractStructBase
      * @param bool $isInkasso
      * @param string $extPaymentType
      * @param string $emdSubGroup
+     * @param string $destinationCode
      */
-    public function __construct(int $bookingPositionRefId, int $travelerRefId, int $ticketPriceRefId, ?array $ticketCoupon = null, ?array $bookingDetailRefId = null, ?\Pggns\MidocoApi\Order\StructType\CreditCardPayment $creditCardPayment = null, ?int $ticketId = null, ?string $bspAgency = null, ?string $bspValidator = null, ?string $checkDigit = null, ?string $dateOfIssue = null, ?string $ticketSubtypeDescription = null, ?string $ticketNumber = null, ?string $ticketSubtype = null, ?string $ticketType = null, ?string $referencedTicketNumber = null, ?string $exchangeTicketNumber = null, ?bool $isDomestic = null, ?string $ticketPrintType = null, ?string $ticketNumberConj = null, ?string $ticketTariffType = null, ?string $ticketingAgent = null, ?string $ticketingCity = null, ?string $ticketingPcc = null, ?string $travelDate = null, ?string $paymentType = null, ?bool $isInkasso = null, ?string $extPaymentType = null, ?string $emdSubGroup = null)
+    public function __construct(int $bookingPositionRefId, int $travelerRefId, int $ticketPriceRefId, ?array $ticketCoupon = null, ?array $bookingDetailRefId = null, ?\Pggns\MidocoApi\Order\StructType\CreditCardPayment $creditCardPayment = null, ?int $ticketId = null, ?string $bspAgency = null, ?string $bspValidator = null, ?string $checkDigit = null, ?string $dateOfIssue = null, ?string $ticketSubtypeDescription = null, ?string $ticketNumber = null, ?string $ticketSubtype = null, ?string $ticketType = null, ?string $referencedTicketNumber = null, ?string $exchangeTicketNumber = null, ?bool $isDomestic = null, ?string $ticketPrintType = null, ?string $ticketNumberConj = null, ?string $ticketTariffType = null, ?string $ticketingAgent = null, ?string $ticketingCity = null, ?string $ticketingPcc = null, ?string $travelDate = null, ?string $paymentType = null, ?bool $isInkasso = null, ?string $extPaymentType = null, ?string $emdSubGroup = null, ?string $destinationCode = null)
     {
         $this
             ->setBookingPositionRefId($bookingPositionRefId)
@@ -289,7 +296,8 @@ class Ticket_1 extends AbstractStructBase
             ->setPaymentType($paymentType)
             ->setIsInkasso($isInkasso)
             ->setExtPaymentType($extPaymentType)
-            ->setEmdSubGroup($emdSubGroup);
+            ->setEmdSubGroup($emdSubGroup)
+            ->setDestinationCode($destinationCode);
     }
     /**
      * Get BookingPositionRefId value
@@ -1216,6 +1224,29 @@ class Ticket_1 extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($emdSubGroup, true), gettype($emdSubGroup)), __LINE__);
         }
         $this->emdSubGroup = $emdSubGroup;
+        
+        return $this;
+    }
+    /**
+     * Get destinationCode value
+     * @return string|null
+     */
+    public function getDestinationCode(): ?string
+    {
+        return $this->destinationCode;
+    }
+    /**
+     * Set destinationCode value
+     * @param string $destinationCode
+     * @return \Pggns\MidocoApi\Order\StructType\Ticket_1
+     */
+    public function setDestinationCode(?string $destinationCode = null): self
+    {
+        // validation for constraint: string
+        if (!is_null($destinationCode) && !is_string($destinationCode)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($destinationCode, true), gettype($destinationCode)), __LINE__);
+        }
+        $this->destinationCode = $destinationCode;
         
         return $this;
     }

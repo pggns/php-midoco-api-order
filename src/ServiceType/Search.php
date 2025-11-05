@@ -921,9 +921,36 @@ class Search extends AbstractSoapClientBase
         }
     }
     /**
+     * Method to call the operation originally named searchOrderPortalDocuments
+     * Meta information extracted from the WSDL
+     * - SOAPHeaderNames: MidocoCredentials
+     * - SOAPHeaderNamespaces: http://www.midoco.de/system
+     * - SOAPHeaderTypes: \Pggns\MidocoApi\Order\StructType\MidocoCredentialsType
+     * - SOAPHeaders: required
+     * @uses AbstractSoapClientBase::getSoapClient()
+     * @uses AbstractSoapClientBase::setResult()
+     * @uses AbstractSoapClientBase::saveLastError()
+     * @param \Pggns\MidocoApi\Order\StructType\SearchOrderPortalDocumentsRequest $paramSearchOrderPortalDocumentsRequest
+     * @return \Pggns\MidocoApi\Order\StructType\SearchOrderPortalDocumentsResponse|bool
+     */
+    public function searchOrderPortalDocuments(\Pggns\MidocoApi\Order\StructType\SearchOrderPortalDocumentsRequest $paramSearchOrderPortalDocumentsRequest)
+    {
+        try {
+            $this->setResult($resultSearchOrderPortalDocuments = $this->getSoapClient()->__soapCall('searchOrderPortalDocuments', [
+                $paramSearchOrderPortalDocumentsRequest,
+            ], [], [], $this->outputHeaders));
+        
+            return $resultSearchOrderPortalDocuments;
+        } catch (SoapFault $soapFault) {
+            $this->saveLastError(__METHOD__, $soapFault);
+        
+            return false;
+        }
+    }
+    /**
      * Returns the result
      * @see AbstractSoapClientBase::getResult()
-     * @return \Pggns\MidocoApi\Order\StructType\SearchAdviceSettlementsResponse|\Pggns\MidocoApi\Order\StructType\SearchAgencySettlementLevelResponse|\Pggns\MidocoApi\Order\StructType\SearchBillingDocumentResponse|\Pggns\MidocoApi\Order\StructType\SearchBillingDunningResponse|\Pggns\MidocoApi\Order\StructType\SearchBookingIdResponse|\Pggns\MidocoApi\Order\StructType\SearchCashBookForCrtUserResponse|\Pggns\MidocoApi\Order\StructType\SearchCashBookPrintResponse|\Pggns\MidocoApi\Order\StructType\SearchCustomerBookingsResponse|\Pggns\MidocoApi\Order\StructType\SearchDocumentItemResponse|\Pggns\MidocoApi\Order\StructType\SearchDSFinVKExportResponse|\Pggns\MidocoApi\Order\StructType\SearchDunningResponse|\Pggns\MidocoApi\Order\StructType\SearchDuplicatedAdviceSettlementDetailResponse|\Pggns\MidocoApi\Order\StructType\SearchFilteredBillingDocumentForCustomerResponse|\Pggns\MidocoApi\Order\StructType\SearchFlightTimeChangeEmailResponse|\Pggns\MidocoApi\Order\StructType\SearchJournalExportsResponse|\Pggns\MidocoApi\Order\StructType\SearchMdcSettlementBillingsResponse|\Pggns\MidocoApi\Order\StructType\SearchMdcSettlementChargesResponse|\Pggns\MidocoApi\Order\StructType\SearchMediatorBillingsResponse|\Pggns\MidocoApi\Order\StructType\SearchMediatorChargesResponse|\Pggns\MidocoApi\Order\StructType\SearchMediatorProductSettlementInfoResponse|\Pggns\MidocoApi\Order\StructType\SearchMediatorSettlementInfoResponse|\Pggns\MidocoApi\Order\StructType\SearchNameSpecifiedCashbookResponse|\Pggns\MidocoApi\Order\StructType\SearchOrderForAgencyResponse|\Pggns\MidocoApi\Order\StructType\SearchOrderResponse|\Pggns\MidocoApi\Order\StructType\SearchOrgUnitUserSpecifiedCashbookResponse|\Pggns\MidocoApi\Order\StructType\SearchPackageMarginsResponse|\Pggns\MidocoApi\Order\StructType\SearchPaymentProviderEntriesResponse|\Pggns\MidocoApi\Order\StructType\SearchPaymentProviderSettlementsResponse|\Pggns\MidocoApi\Order\StructType\SearchReceiptResponse|\Pggns\MidocoApi\Order\StructType\SearchSupplierAgencySettlementsResponse|\Pggns\MidocoApi\Order\StructType\SearchTravelItemByFileKeyResponse|\Pggns\MidocoApi\Order\StructType\SearchTravelNoMarginsResponse|\Pggns\MidocoApi\Order\StructType\SearchTssProtocolResponse
+     * @return \Pggns\MidocoApi\Order\StructType\SearchAdviceSettlementsResponse|\Pggns\MidocoApi\Order\StructType\SearchAgencySettlementLevelResponse|\Pggns\MidocoApi\Order\StructType\SearchBillingDocumentResponse|\Pggns\MidocoApi\Order\StructType\SearchBillingDunningResponse|\Pggns\MidocoApi\Order\StructType\SearchBookingIdResponse|\Pggns\MidocoApi\Order\StructType\SearchCashBookForCrtUserResponse|\Pggns\MidocoApi\Order\StructType\SearchCashBookPrintResponse|\Pggns\MidocoApi\Order\StructType\SearchCustomerBookingsResponse|\Pggns\MidocoApi\Order\StructType\SearchDocumentItemResponse|\Pggns\MidocoApi\Order\StructType\SearchDSFinVKExportResponse|\Pggns\MidocoApi\Order\StructType\SearchDunningResponse|\Pggns\MidocoApi\Order\StructType\SearchDuplicatedAdviceSettlementDetailResponse|\Pggns\MidocoApi\Order\StructType\SearchFilteredBillingDocumentForCustomerResponse|\Pggns\MidocoApi\Order\StructType\SearchFlightTimeChangeEmailResponse|\Pggns\MidocoApi\Order\StructType\SearchJournalExportsResponse|\Pggns\MidocoApi\Order\StructType\SearchMdcSettlementBillingsResponse|\Pggns\MidocoApi\Order\StructType\SearchMdcSettlementChargesResponse|\Pggns\MidocoApi\Order\StructType\SearchMediatorBillingsResponse|\Pggns\MidocoApi\Order\StructType\SearchMediatorChargesResponse|\Pggns\MidocoApi\Order\StructType\SearchMediatorProductSettlementInfoResponse|\Pggns\MidocoApi\Order\StructType\SearchMediatorSettlementInfoResponse|\Pggns\MidocoApi\Order\StructType\SearchNameSpecifiedCashbookResponse|\Pggns\MidocoApi\Order\StructType\SearchOrderForAgencyResponse|\Pggns\MidocoApi\Order\StructType\SearchOrderPortalDocumentsResponse|\Pggns\MidocoApi\Order\StructType\SearchOrderResponse|\Pggns\MidocoApi\Order\StructType\SearchOrgUnitUserSpecifiedCashbookResponse|\Pggns\MidocoApi\Order\StructType\SearchPackageMarginsResponse|\Pggns\MidocoApi\Order\StructType\SearchPaymentProviderEntriesResponse|\Pggns\MidocoApi\Order\StructType\SearchPaymentProviderSettlementsResponse|\Pggns\MidocoApi\Order\StructType\SearchReceiptResponse|\Pggns\MidocoApi\Order\StructType\SearchSupplierAgencySettlementsResponse|\Pggns\MidocoApi\Order\StructType\SearchTravelItemByFileKeyResponse|\Pggns\MidocoApi\Order\StructType\SearchTravelNoMarginsResponse|\Pggns\MidocoApi\Order\StructType\SearchTssProtocolResponse
      */
     public function getResult()
     {

@@ -46,26 +46,36 @@ class GetDetailedBillingPositionsInfoRequest extends AbstractStructBase
      */
     protected ?string $markCalculatedPrintDate = null;
     /**
+     * The loadAgencyPositions
+     * Meta information extracted from the WSDL
+     * - documentation: get only the agency positions (like commission, fee marked for agency)
+     * @var bool|null
+     */
+    protected ?bool $loadAgencyPositions = null;
+    /**
      * Constructor method for GetDetailedBillingPositionsInfoRequest
      * @uses GetDetailedBillingPositionsInfoRequest::setBillingDocumentId()
      * @uses GetDetailedBillingPositionsInfoRequest::setOrderId()
      * @uses GetDetailedBillingPositionsInfoRequest::setCalculatedPrintDate()
      * @uses GetDetailedBillingPositionsInfoRequest::setOnlyUnprinted()
      * @uses GetDetailedBillingPositionsInfoRequest::setMarkCalculatedPrintDate()
+     * @uses GetDetailedBillingPositionsInfoRequest::setLoadAgencyPositions()
      * @param int $billingDocumentId
      * @param int $orderId
      * @param string $calculatedPrintDate
      * @param bool $onlyUnprinted
      * @param string $markCalculatedPrintDate
+     * @param bool $loadAgencyPositions
      */
-    public function __construct(?int $billingDocumentId = null, ?int $orderId = null, ?string $calculatedPrintDate = null, ?bool $onlyUnprinted = null, ?string $markCalculatedPrintDate = null)
+    public function __construct(?int $billingDocumentId = null, ?int $orderId = null, ?string $calculatedPrintDate = null, ?bool $onlyUnprinted = null, ?string $markCalculatedPrintDate = null, ?bool $loadAgencyPositions = null)
     {
         $this
             ->setBillingDocumentId($billingDocumentId)
             ->setOrderId($orderId)
             ->setCalculatedPrintDate($calculatedPrintDate)
             ->setOnlyUnprinted($onlyUnprinted)
-            ->setMarkCalculatedPrintDate($markCalculatedPrintDate);
+            ->setMarkCalculatedPrintDate($markCalculatedPrintDate)
+            ->setLoadAgencyPositions($loadAgencyPositions);
     }
     /**
      * Get billingDocumentId value
@@ -179,6 +189,29 @@ class GetDetailedBillingPositionsInfoRequest extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($markCalculatedPrintDate, true), gettype($markCalculatedPrintDate)), __LINE__);
         }
         $this->markCalculatedPrintDate = $markCalculatedPrintDate;
+        
+        return $this;
+    }
+    /**
+     * Get loadAgencyPositions value
+     * @return bool|null
+     */
+    public function getLoadAgencyPositions(): ?bool
+    {
+        return $this->loadAgencyPositions;
+    }
+    /**
+     * Set loadAgencyPositions value
+     * @param bool $loadAgencyPositions
+     * @return \Pggns\MidocoApi\Order\StructType\GetDetailedBillingPositionsInfoRequest
+     */
+    public function setLoadAgencyPositions(?bool $loadAgencyPositions = null): self
+    {
+        // validation for constraint: boolean
+        if (!is_null($loadAgencyPositions) && !is_bool($loadAgencyPositions)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($loadAgencyPositions, true), gettype($loadAgencyPositions)), __LINE__);
+        }
+        $this->loadAgencyPositions = $loadAgencyPositions;
         
         return $this;
     }

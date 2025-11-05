@@ -18,33 +18,33 @@ class BookSupplierAgencySettlementBookingResponse extends AbstractStructBase
      * The MidocoSupplierAgencySettlementBooking
      * Meta information extracted from the WSDL
      * - ref: MidocoSupplierAgencySettlementBooking
-     * @var \Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlementBooking|null
+     * @var \Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlementBookingType|null
      */
-    protected ?\Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlementBooking $MidocoSupplierAgencySettlementBooking = null;
+    protected ?\Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlementBookingType $MidocoSupplierAgencySettlementBooking = null;
     /**
      * Constructor method for BookSupplierAgencySettlementBookingResponse
      * @uses BookSupplierAgencySettlementBookingResponse::setMidocoSupplierAgencySettlementBooking()
-     * @param \Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlementBooking $midocoSupplierAgencySettlementBooking
+     * @param \Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlementBookingType $midocoSupplierAgencySettlementBooking
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlementBooking $midocoSupplierAgencySettlementBooking = null)
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlementBookingType $midocoSupplierAgencySettlementBooking = null)
     {
         $this
             ->setMidocoSupplierAgencySettlementBooking($midocoSupplierAgencySettlementBooking);
     }
     /**
      * Get MidocoSupplierAgencySettlementBooking value
-     * @return \Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlementBooking|null
+     * @return \Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlementBookingType|null
      */
-    public function getMidocoSupplierAgencySettlementBooking(): ?\Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlementBooking
+    public function getMidocoSupplierAgencySettlementBooking(): ?\Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlementBookingType
     {
         return $this->MidocoSupplierAgencySettlementBooking;
     }
     /**
      * Set MidocoSupplierAgencySettlementBooking value
-     * @param \Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlementBooking $midocoSupplierAgencySettlementBooking
+     * @param \Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlementBookingType $midocoSupplierAgencySettlementBooking
      * @return \Pggns\MidocoApi\Order\StructType\BookSupplierAgencySettlementBookingResponse
      */
-    public function setMidocoSupplierAgencySettlementBooking(?\Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlementBooking $midocoSupplierAgencySettlementBooking = null): self
+    public function setMidocoSupplierAgencySettlementBooking(?\Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlementBookingType $midocoSupplierAgencySettlementBooking = null): self
     {
         $this->MidocoSupplierAgencySettlementBooking = $midocoSupplierAgencySettlementBooking;
         

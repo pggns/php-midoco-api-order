@@ -864,6 +864,33 @@ class Save extends AbstractSoapClientBase
         }
     }
     /**
+     * Method to call the operation originally named saveVoucherExpiryDate
+     * Meta information extracted from the WSDL
+     * - SOAPHeaderNames: MidocoCredentials
+     * - SOAPHeaderNamespaces: http://www.midoco.de/system
+     * - SOAPHeaderTypes: \Pggns\MidocoApi\Order\StructType\MidocoCredentialsType
+     * - SOAPHeaders: required
+     * @uses AbstractSoapClientBase::getSoapClient()
+     * @uses AbstractSoapClientBase::setResult()
+     * @uses AbstractSoapClientBase::saveLastError()
+     * @param \Pggns\MidocoApi\Order\StructType\SaveVoucherExpiryDateRequest $paramSaveVoucherExpiryDateRequest
+     * @return \Pggns\MidocoApi\Order\StructType\SaveVoucherExpiryDateResponse|bool
+     */
+    public function saveVoucherExpiryDate(\Pggns\MidocoApi\Order\StructType\SaveVoucherExpiryDateRequest $paramSaveVoucherExpiryDateRequest)
+    {
+        try {
+            $this->setResult($resultSaveVoucherExpiryDate = $this->getSoapClient()->__soapCall('saveVoucherExpiryDate', [
+                $paramSaveVoucherExpiryDateRequest,
+            ], [], [], $this->outputHeaders));
+        
+            return $resultSaveVoucherExpiryDate;
+        } catch (SoapFault $soapFault) {
+            $this->saveLastError(__METHOD__, $soapFault);
+        
+            return false;
+        }
+    }
+    /**
      * Method to call the operation originally named saveOrdersDbiInfos
      * Meta information extracted from the WSDL
      * - SOAPHeaderNames: MidocoCredentials
@@ -992,6 +1019,33 @@ class Save extends AbstractSoapClientBase
             ], [], [], $this->outputHeaders));
         
             return $resultSaveBillingDocDbiInfos;
+        } catch (SoapFault $soapFault) {
+            $this->saveLastError(__METHOD__, $soapFault);
+        
+            return false;
+        }
+    }
+    /**
+     * Method to call the operation originally named saveBillingOnlinePayment
+     * Meta information extracted from the WSDL
+     * - SOAPHeaderNames: MidocoCredentials
+     * - SOAPHeaderNamespaces: http://www.midoco.de/system
+     * - SOAPHeaderTypes: \Pggns\MidocoApi\Order\StructType\MidocoCredentialsType
+     * - SOAPHeaders: required
+     * @uses AbstractSoapClientBase::getSoapClient()
+     * @uses AbstractSoapClientBase::setResult()
+     * @uses AbstractSoapClientBase::saveLastError()
+     * @param \Pggns\MidocoApi\Order\StructType\SaveBillingOnlinePaymentRequest $paramSaveBillingOnlinePaymentRequest
+     * @return \Pggns\MidocoApi\Order\StructType\SaveBillingOnlinePaymentResponse|bool
+     */
+    public function saveBillingOnlinePayment(\Pggns\MidocoApi\Order\StructType\SaveBillingOnlinePaymentRequest $paramSaveBillingOnlinePaymentRequest)
+    {
+        try {
+            $this->setResult($resultSaveBillingOnlinePayment = $this->getSoapClient()->__soapCall('saveBillingOnlinePayment', [
+                $paramSaveBillingOnlinePaymentRequest,
+            ], [], [], $this->outputHeaders));
+        
+            return $resultSaveBillingOnlinePayment;
         } catch (SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
         
@@ -1540,9 +1594,63 @@ class Save extends AbstractSoapClientBase
         }
     }
     /**
+     * Method to call the operation originally named saveDestinationManagerLink
+     * Meta information extracted from the WSDL
+     * - SOAPHeaderNames: MidocoCredentials
+     * - SOAPHeaderNamespaces: http://www.midoco.de/system
+     * - SOAPHeaderTypes: \Pggns\MidocoApi\Order\StructType\MidocoCredentialsType
+     * - SOAPHeaders: required
+     * @uses AbstractSoapClientBase::getSoapClient()
+     * @uses AbstractSoapClientBase::setResult()
+     * @uses AbstractSoapClientBase::saveLastError()
+     * @param \Pggns\MidocoApi\Order\StructType\SaveDestinationManagerLinkRequest $paramSaveDestinationManagerLinkRequest
+     * @return \Pggns\MidocoApi\Order\StructType\SaveDestinationManagerLinkResponse|bool
+     */
+    public function saveDestinationManagerLink(\Pggns\MidocoApi\Order\StructType\SaveDestinationManagerLinkRequest $paramSaveDestinationManagerLinkRequest)
+    {
+        try {
+            $this->setResult($resultSaveDestinationManagerLink = $this->getSoapClient()->__soapCall('saveDestinationManagerLink', [
+                $paramSaveDestinationManagerLinkRequest,
+            ], [], [], $this->outputHeaders));
+        
+            return $resultSaveDestinationManagerLink;
+        } catch (SoapFault $soapFault) {
+            $this->saveLastError(__METHOD__, $soapFault);
+        
+            return false;
+        }
+    }
+    /**
+     * Method to call the operation originally named saveOrderIcalContent
+     * Meta information extracted from the WSDL
+     * - SOAPHeaderNames: MidocoCredentials
+     * - SOAPHeaderNamespaces: http://www.midoco.de/system
+     * - SOAPHeaderTypes: \Pggns\MidocoApi\Order\StructType\MidocoCredentialsType
+     * - SOAPHeaders: required
+     * @uses AbstractSoapClientBase::getSoapClient()
+     * @uses AbstractSoapClientBase::setResult()
+     * @uses AbstractSoapClientBase::saveLastError()
+     * @param \Pggns\MidocoApi\Order\StructType\SaveOrderICalContentRequest $paramSaveOrderICalContentRequest
+     * @return \Pggns\MidocoApi\Order\StructType\SaveOrderICalContentResponse|bool
+     */
+    public function saveOrderIcalContent(\Pggns\MidocoApi\Order\StructType\SaveOrderICalContentRequest $paramSaveOrderICalContentRequest)
+    {
+        try {
+            $this->setResult($resultSaveOrderIcalContent = $this->getSoapClient()->__soapCall('saveOrderIcalContent', [
+                $paramSaveOrderICalContentRequest,
+            ], [], [], $this->outputHeaders));
+        
+            return $resultSaveOrderIcalContent;
+        } catch (SoapFault $soapFault) {
+            $this->saveLastError(__METHOD__, $soapFault);
+        
+            return false;
+        }
+    }
+    /**
      * Returns the result
      * @see AbstractSoapClientBase::getResult()
-     * @return \Pggns\MidocoApi\Order\StructType\SaveAdviceSettlementDetailResponse|\Pggns\MidocoApi\Order\StructType\SaveAdviceSettlementResponse|\Pggns\MidocoApi\Order\StructType\SaveBillingDocDbiInfosResponse|\Pggns\MidocoApi\Order\StructType\SaveBillingDocRemarkResponse|\Pggns\MidocoApi\Order\StructType\SaveBillingDocumentDocumentResponse|\Pggns\MidocoApi\Order\StructType\SaveBillingDocumentPositionResponse|\Pggns\MidocoApi\Order\StructType\SaveBillingDocumentResponse|\Pggns\MidocoApi\Order\StructType\SaveBillingNoticeCommentResponse|\Pggns\MidocoApi\Order\StructType\SaveBillingNoticesResponse|\Pggns\MidocoApi\Order\StructType\SaveBillingPositionResponse|\Pggns\MidocoApi\Order\StructType\SaveBillingPosRemarkResponse|\Pggns\MidocoApi\Order\StructType\SaveBillingPrintSettingsResponse|\Pggns\MidocoApi\Order\StructType\SaveBillingVatCalculationsResponse|\Pggns\MidocoApi\Order\StructType\SaveBookingJournalResponse|\Pggns\MidocoApi\Order\StructType\SaveCashbookResponse|\Pggns\MidocoApi\Order\StructType\SaveDebitInfoForReceiptResponse|\Pggns\MidocoApi\Order\StructType\SaveDebitInfoResponse|\Pggns\MidocoApi\Order\StructType\SaveDunningLockForBillingDocumentResponse|\Pggns\MidocoApi\Order\StructType\SaveFairplaneEmail4OrderResponse|\Pggns\MidocoApi\Order\StructType\SaveFlightTimeChangeEmailResponse|\Pggns\MidocoApi\Order\StructType\SaveIncomingInvoiceResponse|\Pggns\MidocoApi\Order\StructType\SaveManualItemResponse|\Pggns\MidocoApi\Order\StructType\SaveMdcSettlementBillingResponse|\Pggns\MidocoApi\Order\StructType\SaveMediatorBillingResponse|\Pggns\MidocoApi\Order\StructType\SaveMidocoBonusAdditionResponse|\Pggns\MidocoApi\Order\StructType\SaveMidocoBonusCalculationResponse|\Pggns\MidocoApi\Order\StructType\SaveMidocoItemSellingModesResponse|\Pggns\MidocoApi\Order\StructType\SaveMidocoOrderQmResponse|\Pggns\MidocoApi\Order\StructType\SaveMultiNoticeResponse|\Pggns\MidocoApi\Order\StructType\SaveOrderAttributesResponse|\Pggns\MidocoApi\Order\StructType\SaveOrderDebitPaymentResponse|\Pggns\MidocoApi\Order\StructType\SaveOrderDocumentResponse|\Pggns\MidocoApi\Order\StructType\SaveOrderHistoryResponse|\Pggns\MidocoApi\Order\StructType\SaveOrderLockPeriodResponse|\Pggns\MidocoApi\Order\StructType\SaveOrderMarginInfoResponse|\Pggns\MidocoApi\Order\StructType\SaveOrderNoticeCommentResponse|\Pggns\MidocoApi\Order\StructType\SaveOrderNoticeResponse|\Pggns\MidocoApi\Order\StructType\SaveOrderOnlinePaymentResponse|\Pggns\MidocoApi\Order\StructType\SaveOrderPaymentPaycodeResponse|\Pggns\MidocoApi\Order\StructType\SaveOrderRemarkResponse|\Pggns\MidocoApi\Order\StructType\SaveOrderResponse|\Pggns\MidocoApi\Order\StructType\SaveOrdersDbiInfosResponse|\Pggns\MidocoApi\Order\StructType\SavePaymentProviderSettlementBookingResponse|\Pggns\MidocoApi\Order\StructType\SavePaymentProviderSettlementResponse|\Pggns\MidocoApi\Order\StructType\SaveRevenueBookingResponse|\Pggns\MidocoApi\Order\StructType\SaveSellItemAndRevenueBookingResponse|\Pggns\MidocoApi\Order\StructType\SaveSellItemAttributesResponse|\Pggns\MidocoApi\Order\StructType\SaveSellItemDocumentResponse|\Pggns\MidocoApi\Order\StructType\SaveSellItemResponse|\Pggns\MidocoApi\Order\StructType\SaveSellRemarkResponse|\Pggns\MidocoApi\Order\StructType\SaveSubOrdersResponse|\Pggns\MidocoApi\Order\StructType\SaveSupplAgencySettlemBookResponse|\Pggns\MidocoApi\Order\StructType\SaveSupplAgencySettlemJournalsResponse|\Pggns\MidocoApi\Order\StructType\SaveSupplierAgencySettlementResponse|\Pggns\MidocoApi\Order\StructType\SaveTravelCMSResponse|\Pggns\MidocoApi\Order\StructType\SaveTravelnoPurchaseAssignmentResponse
+     * @return \Pggns\MidocoApi\Order\StructType\SaveAdviceSettlementDetailResponse|\Pggns\MidocoApi\Order\StructType\SaveAdviceSettlementResponse|\Pggns\MidocoApi\Order\StructType\SaveBillingDocDbiInfosResponse|\Pggns\MidocoApi\Order\StructType\SaveBillingDocRemarkResponse|\Pggns\MidocoApi\Order\StructType\SaveBillingDocumentDocumentResponse|\Pggns\MidocoApi\Order\StructType\SaveBillingDocumentPositionResponse|\Pggns\MidocoApi\Order\StructType\SaveBillingDocumentResponse|\Pggns\MidocoApi\Order\StructType\SaveBillingNoticeCommentResponse|\Pggns\MidocoApi\Order\StructType\SaveBillingNoticesResponse|\Pggns\MidocoApi\Order\StructType\SaveBillingOnlinePaymentResponse|\Pggns\MidocoApi\Order\StructType\SaveBillingPositionResponse|\Pggns\MidocoApi\Order\StructType\SaveBillingPosRemarkResponse|\Pggns\MidocoApi\Order\StructType\SaveBillingPrintSettingsResponse|\Pggns\MidocoApi\Order\StructType\SaveBillingVatCalculationsResponse|\Pggns\MidocoApi\Order\StructType\SaveBookingJournalResponse|\Pggns\MidocoApi\Order\StructType\SaveCashbookResponse|\Pggns\MidocoApi\Order\StructType\SaveDebitInfoForReceiptResponse|\Pggns\MidocoApi\Order\StructType\SaveDebitInfoResponse|\Pggns\MidocoApi\Order\StructType\SaveDestinationManagerLinkResponse|\Pggns\MidocoApi\Order\StructType\SaveDunningLockForBillingDocumentResponse|\Pggns\MidocoApi\Order\StructType\SaveFairplaneEmail4OrderResponse|\Pggns\MidocoApi\Order\StructType\SaveFlightTimeChangeEmailResponse|\Pggns\MidocoApi\Order\StructType\SaveIncomingInvoiceResponse|\Pggns\MidocoApi\Order\StructType\SaveManualItemResponse|\Pggns\MidocoApi\Order\StructType\SaveMdcSettlementBillingResponse|\Pggns\MidocoApi\Order\StructType\SaveMediatorBillingResponse|\Pggns\MidocoApi\Order\StructType\SaveMidocoBonusAdditionResponse|\Pggns\MidocoApi\Order\StructType\SaveMidocoBonusCalculationResponse|\Pggns\MidocoApi\Order\StructType\SaveMidocoItemSellingModesResponse|\Pggns\MidocoApi\Order\StructType\SaveMidocoOrderQmResponse|\Pggns\MidocoApi\Order\StructType\SaveMultiNoticeResponse|\Pggns\MidocoApi\Order\StructType\SaveOrderAttributesResponse|\Pggns\MidocoApi\Order\StructType\SaveOrderDebitPaymentResponse|\Pggns\MidocoApi\Order\StructType\SaveOrderDocumentResponse|\Pggns\MidocoApi\Order\StructType\SaveOrderHistoryResponse|\Pggns\MidocoApi\Order\StructType\SaveOrderICalContentResponse|\Pggns\MidocoApi\Order\StructType\SaveOrderLockPeriodResponse|\Pggns\MidocoApi\Order\StructType\SaveOrderMarginInfoResponse|\Pggns\MidocoApi\Order\StructType\SaveOrderNoticeCommentResponse|\Pggns\MidocoApi\Order\StructType\SaveOrderNoticeResponse|\Pggns\MidocoApi\Order\StructType\SaveOrderOnlinePaymentResponse|\Pggns\MidocoApi\Order\StructType\SaveOrderPaymentPaycodeResponse|\Pggns\MidocoApi\Order\StructType\SaveOrderRemarkResponse|\Pggns\MidocoApi\Order\StructType\SaveOrderResponse|\Pggns\MidocoApi\Order\StructType\SaveOrdersDbiInfosResponse|\Pggns\MidocoApi\Order\StructType\SavePaymentProviderSettlementBookingResponse|\Pggns\MidocoApi\Order\StructType\SavePaymentProviderSettlementResponse|\Pggns\MidocoApi\Order\StructType\SaveRevenueBookingResponse|\Pggns\MidocoApi\Order\StructType\SaveSellItemAndRevenueBookingResponse|\Pggns\MidocoApi\Order\StructType\SaveSellItemAttributesResponse|\Pggns\MidocoApi\Order\StructType\SaveSellItemDocumentResponse|\Pggns\MidocoApi\Order\StructType\SaveSellItemResponse|\Pggns\MidocoApi\Order\StructType\SaveSellRemarkResponse|\Pggns\MidocoApi\Order\StructType\SaveSubOrdersResponse|\Pggns\MidocoApi\Order\StructType\SaveSupplAgencySettlemBookResponse|\Pggns\MidocoApi\Order\StructType\SaveSupplAgencySettlemJournalsResponse|\Pggns\MidocoApi\Order\StructType\SaveSupplierAgencySettlementResponse|\Pggns\MidocoApi\Order\StructType\SaveTravelCMSResponse|\Pggns\MidocoApi\Order\StructType\SaveTravelnoPurchaseAssignmentResponse|\Pggns\MidocoApi\Order\StructType\SaveVoucherExpiryDateResponse
      */
     public function getResult()
     {
